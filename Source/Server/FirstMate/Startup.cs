@@ -28,7 +28,7 @@ namespace FirstMate
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDbContext<TradeWarsDbContext>(options =>
+            services.AddDbContextFactory<TWDB>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("TradeWarsConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -38,6 +38,7 @@ namespace FirstMate
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddSingleton<WeatherForecastService>();
+//            services.AddSingleton<GamesService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

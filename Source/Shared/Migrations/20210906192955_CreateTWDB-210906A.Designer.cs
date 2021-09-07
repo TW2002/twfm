@@ -8,8 +8,8 @@ using TradeWars.Data;
 
 namespace TradeWars.Migrations
 {
-    [DbContext(typeof(TradeWarsDbContext))]
-    [Migration("20210906151108_CreateTWDB-210906A")]
+    [DbContext(typeof(TWDB))]
+    [Migration("20210906192955_CreateTWDB-210906A")]
     partial class CreateTWDB210906A
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

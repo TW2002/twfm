@@ -7,8 +7,8 @@ using TradeWars.Data;
 
 namespace TradeWars.Migrations
 {
-    [DbContext(typeof(TradeWarsDbContext))]
-    partial class TradeWarsDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(TWDB))]
+    partial class TWDBModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
