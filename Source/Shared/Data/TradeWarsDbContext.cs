@@ -34,14 +34,6 @@ namespace TradeWars.Data
         //}
 
 
-//        public string DbPath { get; private set; }
-
-        public TWDB(DbContextOptions<TWDB> o) : base (o)
-        {
-//            var folder = Environment.SpecialFolder.LocalApplicationData;
-//            var path = Environment.GetFolderPath(folder);
-//            DbPath = $"{path}{System.IO.Path.DirectorySeparatorChar}blogging.db";
-        }
 
 
 
