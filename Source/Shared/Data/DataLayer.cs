@@ -9,7 +9,8 @@ namespace TradeWars.Data
     public interface IDataLayer
     {
         IList<Game> AllGames();
-        Game GamesById(int gameid);
+        //Game GameById(int gameid);
+        IList<Game> GamesByServer(int id);
     }
     class DataLayer :IDataLayer
     {
@@ -19,11 +20,12 @@ namespace TradeWars.Data
             return twdb.Games.ToList();
         }
 
-        public Game GamesById(int ServerId)
+        public IList<Game> GamesByServer(int id)
         {
             using TWDB twdb = new();
             return twdb.Games
-                .Single(g => g.ServerId == ServerId);
+                .Where(g => g.ServerId == id)
+                .ToList();
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿@page "/games/{ServerId:int}"
 @using TradeWars.Data
-@using Microsoft.EntityFrameworkCore;
-@inject IDbContextFactory<TWDB> cf
+@inject IDataLayer DataLayer
 
 
 <h3>Games</h3>
@@ -46,15 +45,21 @@ else
     [Parameter]
     public int ServerId { get; set; }
 
-    private List<Game> games;
+    IList<Game> games { get; set; }
 
     protected override void OnInitialized()
     {
-        TWDB twdb = cf.CreateDbContext();
-        //twdb.Games.Add(new Game());
-
-        //games = await GamesService.GetGamesAsync(10);
-        games = twdb.Games.Where(g => g.ServerId == ServerId)
-            .OrderBy(g => g.Letter).ToList();
+        games = DataLayer.GamesByServer(ServerId);
     }
+    //private List<Game> games;
+
+    //protected override void OnInitialized()
+    //{
+    //    TWDB twdb = cf.CreateDbContext();
+    //    //twdb.Games.Add(new Game());
+
+    //    //games = await GamesService.GetGamesAsync(10);
+    //    games = twdb.Games.Where(g => g.ServerId == ServerId)
+    //        .OrderBy(g => g.Letter).ToList();
+    //}
 }
