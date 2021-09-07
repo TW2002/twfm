@@ -1,0 +1,60 @@
+﻿@page "/games/{ServerId:int}"
+@using TradeWars.Data
+@using Microsoft.EntityFrameworkCore;
+@inject IDbContextFactory<TWDB> cf
+
+
+<h3>Games</h3>
+<h1>Builder''s Games</h1>
+
+<p>Star Killer''s Ice 9.</p>
+
+@if (games == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    if (games.Count() > 0)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Leter</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var game in games)
+                {
+                    <tr>
+                        <td>@game.Letter</td>
+                        <td>@game.Description</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p><em>No records found...</em></p>
+    }
+}
+
+
+@code {
+    [Parameter]
+    public int ServerId { get; set; }
+
+    private List<Game> games;
+
+    protected override void OnInitialized()
+    {
+        TWDB twdb = cf.CreateDbContext();
+        //twdb.Games.Add(new Game());
+
+        //games = await GamesService.GetGamesAsync(10);
+        games = twdb.Games.Where(g => g.ServerId == ServerId)
+            .OrderBy(g => g.Letter).ToList();
+    }
+}
