@@ -16,13 +16,13 @@ namespace TradeWars.Data
     {
         public IList<Game> AllGames()
         {
-            using TWDB twdb = new();
+            using TWDB twdb = new TWDB();
             return twdb.Games.ToList();
         }
 
         public IList<Game> GamesByServer(int id)
         {
-            using TWDB twdb = new();
+            using TWDB twdb = new TWDB();
             return twdb.Games
                 .Where(g => g.ServerId == id)
                 .ToList();
