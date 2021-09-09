@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-namespace FirstMate.Data.Migrations
+namespace Daemom__Core_.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {

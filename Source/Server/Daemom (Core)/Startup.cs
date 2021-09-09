@@ -1,16 +1,22 @@
+using Daemom__Core_.Areas.Identity;
+using Daemom__Core_.Data;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using FirstMate.Areas.Identity;
-using FirstMate.Data;
-using TradeWars.Data;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace FirstMate
+namespace Daemom__Core_
 {
     public class Startup
     {
@@ -28,9 +34,6 @@ namespace FirstMate
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDbContextFactory<TWDB>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("TradeWarsConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
@@ -38,7 +41,6 @@ namespace FirstMate
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddSingleton<WeatherForecastService>();
-//            services.AddSingleton<GamesService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
