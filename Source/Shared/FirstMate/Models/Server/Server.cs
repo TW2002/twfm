@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TradeWars.Data
+namespace TradeWars
 {
-    public class Site  
+    public class Server
     {
         [Key]
+        public Guid ServerId { get; set; }
         public Guid SiteId { get; set; }
-
         public bool Active { get; set; }
 
         [StringLength(10)]

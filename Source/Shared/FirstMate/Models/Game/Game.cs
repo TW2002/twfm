@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TradeWars.Data
+namespace TradeWars
 {
     public class Game
     {
