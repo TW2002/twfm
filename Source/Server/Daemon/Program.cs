@@ -1,5 +1,5 @@
-﻿using FirstMate;
-using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.Hosting;
+using FirstMate;
 
 namespace Daemon
 {

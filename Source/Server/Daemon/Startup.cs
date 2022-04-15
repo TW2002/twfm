@@ -1,9 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-//using Microsoft.AspNetCore.Http;
-//using Microsoft.AspNetCore.Identity;\
-using FirstMate;
 using Microsoft.AspNetCore.Builder;
+using FirstMate;
 
 namespace Daemon
 {

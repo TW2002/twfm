@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 ////////////////////////////////////////
 // entity framework notes
-//add-migration <name> -cotext=fmd or adc
-//update-database
+// add-migration <name> -cotext=fmd or adc
+// update-database
 
 namespace FirstMate
 {
