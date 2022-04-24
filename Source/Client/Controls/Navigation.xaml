@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Controls.TextDisplay"
+﻿<UserControl x:Class="Controls.Navigation"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,11 +6,7 @@
              xmlns:local="clr-namespace:Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="red">
-        <RichTextBox Name="MainTextBox" Height="450" Width="800" Margin="25"
-                     Background="Blue" Foreground="White">
-            
-        </RichTextBox>
+    <Grid Background="Magenta">
             
     </Grid>
 </UserControl>

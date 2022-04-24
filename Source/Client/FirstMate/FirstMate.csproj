@@ -8,11 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\lens.png" />
     <None Remove="Images\logo.png" />
     <None Remove="logo.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\lens.png" />
     <Resource Include="Images\logo.png" />
     <Resource Include="logo.png" />
   </ItemGroup>

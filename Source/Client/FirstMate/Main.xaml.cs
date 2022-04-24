@@ -42,5 +42,22 @@ namespace FirstMate
             }
 
         }
+
+        private void NavigationControl_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Right)
+            {
+                if (Selector.GetIsSelected((Control)sender))
+                {
+                    Selector.SetIsSelected((Control)sender, false);
+                }
+                else
+                {
+                    Selector.SetIsSelected((Control)sender, true);
+                }
+
+            }
+
+        }
     }
 }
