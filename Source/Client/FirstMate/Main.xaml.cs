@@ -30,6 +30,14 @@ namespace FirstMate
         {
             if (e.ChangedButton == MouseButton.Right)
             {
+                foreach (Control child in MainCanvas.Children)
+                {
+                    if (child != (Control)sender)
+                    {
+                        Selector.SetIsSelected(child, false);
+                    }
+                }
+
                 if (Selector.GetIsSelected((Control)sender))
                 {
                     Selector.SetIsSelected((Control)sender, false);
@@ -43,10 +51,18 @@ namespace FirstMate
 
         }
 
-        private void NavigationControl_MouseDown(object sender, MouseButtonEventArgs e)
+        private void ScannerControl_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Right)
             {
+                foreach (Control child in MainCanvas.Children)
+                {
+                    if (child != (Control)sender)
+                    {
+                        Selector.SetIsSelected(child, false);
+                    }
+                }
+
                 if (Selector.GetIsSelected((Control)sender))
                 {
                     Selector.SetIsSelected((Control)sender, false);

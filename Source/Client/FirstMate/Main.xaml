@@ -19,45 +19,39 @@
 
     <Grid Background="Black">
         <Image Name="FirstMateLens"
-               Height="467" Width="511" Margin="10,-150,0,0"
+               Height="230" Width="255" Margin="10,-75,0,0"
                HorizontalAlignment="Left" 
                VerticalAlignment="Top" 
                Stretch="Uniform" 
                Source="/FirstMate;component/Images/lens.png" />
         <Image Name="FirstMateLogo"
-               Height="75" Width="350" Margin="10,10,0,0"
+               Height="37.5" Width="175" Margin="10,10,0,0"
                HorizontalAlignment="Left" 
                VerticalAlignment="Top" 
                Stretch="Uniform" 
                Source="/FirstMate;component/Images/logo.png" />
         <Canvas Name="MainCanvas">
-            <ContentControl Name="DisplayControl" Margin="10,200,10,10"
+            <ContentControl Name="DisplayControl" Margin="0"
                             MouseDown="DisplayControl_MouseDown" 
-                            Visibility="Visible" 
-                             Padding="1" 
-                            Style="{StaticResource AdornerStyle}" 
-                            HorizontalAlignment="Left" 
-                            VerticalAlignment="top" 
-                            MinWidth="100" MinHeight="75" 
-                            Canvas.Left="5" 
-                            Canvas.Top="5">
-                <uc:TextDisplay Name="MainDisplay" 
-                        VerticalAlignment="Top"
-                        HorizontalAlignment="Left"/>
-
-            </ContentControl>
-            <ContentControl Name="NavigationControl" Margin="10,100,10,10"
-                            MouseDown="NavigationControl_MouseDown" 
                             Visibility="Visible" Padding="1" 
                             Style="{StaticResource AdornerStyle}" 
                             HorizontalAlignment="Left" 
                             VerticalAlignment="top" 
                             MinWidth="100" MinHeight="75" 
-                            Canvas.Left="5" 
-                            Canvas.Top="5">
-                <uc:Navigation Name="MainNavigation" 
-                        VerticalAlignment="Top"
-                        HorizontalAlignment="Left"/>
+                            Width="800" Height="400"
+                            Canvas.Left="5" Canvas.Top="50">
+                <uc:TextDisplay Name="MainDisplay" />
+            </ContentControl>
+            <ContentControl Name="ScasnnerControl" Margin="0"
+                            MouseDown="ScannerControl_MouseDown" 
+                            Visibility="Visible" Padding="1" 
+                            Style="{StaticResource AdornerStyle}" 
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="top" 
+                            MinWidth="50" MinHeight="50" 
+                            Width="200" Height="200" 
+                            Canvas.Left="5" Canvas.Top="450">
+                <uc:Scanner Name="Scanner" />
 
             </ContentControl>
 
