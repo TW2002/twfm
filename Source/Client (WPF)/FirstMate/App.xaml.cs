@@ -13,5 +13,14 @@ namespace FirstMate
     /// </summary>
     public partial class App : Application
     {
+        App()
+        {
+            ResourceDictionary appTheme = new();
+            appTheme.Source = new Uri("/Themes/Dark.xaml", UriKind.Relative);
+
+            Resources.MergedDictionaries.Add(appTheme);
+        }
+
+
     }
 }
