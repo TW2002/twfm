@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "FirstMate (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "FirstMate (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

@@ -42,7 +42,7 @@ namespace FirstMate
 
         // Refresh Timer
         System.Timers.Timer RefreshTimer;
-        DateTime LastRefresh;
+        //DateTime LastRefresh;
 
         // Store the mouse state for title bar drag, snap, and maximize events.
         bool UnSnap = false;

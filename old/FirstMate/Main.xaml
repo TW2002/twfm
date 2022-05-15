@@ -191,7 +191,78 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+
+
         
+        
+        <SolidColorBrush x:Key="TabItem.Selected.Background" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="TabItem.Selected.Border" Color="#ACACAC"/>
+        <Style x:Key="TabControlStyle1" TargetType="{x:Type TabControl}">
+            <Setter Property="Padding" Value="2"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Background" Value="{StaticResource TabItem.Selected.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TabItem.Selected.Border}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabControl}">
+                        <Grid x:Name="templateRoot" ClipToBounds="true" SnapsToDevicePixels="true" KeyboardNavigation.TabNavigation="Local">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition x:Name="ColumnDefinition0"/>
+                                <ColumnDefinition x:Name="ColumnDefinition1" Width="0"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition x:Name="RowDefinition0" Height="Auto"/>
+                                <RowDefinition x:Name="RowDefinition1" Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TabPanel x:Name="headerPanel" Background="Transparent" Grid.Column="0" IsItemsHost="true" Margin="2,2,2,0" Grid.Row="0" KeyboardNavigation.TabIndex="1" Panel.ZIndex="1"/>
+                            <Border x:Name="contentPanel" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Grid.Column="0" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
+                                <ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="TabStripPlacement" Value="Bottom">
+                                <Setter Property="Grid.Row" TargetName="headerPanel" Value="1"/>
+                                <Setter Property="Grid.Row" TargetName="contentPanel" Value="0"/>
+                                <Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
+                                <Setter Property="Height" TargetName="RowDefinition1" Value="Auto"/>
+                                <Setter Property="Margin" TargetName="headerPanel" Value="2,0,2,2"/>
+                            </Trigger>
+                            <Trigger Property="TabStripPlacement" Value="Left">
+                                <Setter Property="Grid.Row" TargetName="headerPanel" Value="0"/>
+                                <Setter Property="Grid.Row" TargetName="contentPanel" Value="0"/>
+                                <Setter Property="Grid.Column" TargetName="headerPanel" Value="0"/>
+                                <Setter Property="Grid.Column" TargetName="contentPanel" Value="1"/>
+                                <Setter Property="Width" TargetName="ColumnDefinition0" Value="Auto"/>
+                                <Setter Property="Width" TargetName="ColumnDefinition1" Value="*"/>
+                                <Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
+                                <Setter Property="Height" TargetName="RowDefinition1" Value="0"/>
+                                <Setter Property="Margin" TargetName="headerPanel" Value="2,2,0,2"/>
+                            </Trigger>
+                            <Trigger Property="TabStripPlacement" Value="Right">
+                                <Setter Property="Grid.Row" TargetName="headerPanel" Value="0"/>
+                                <Setter Property="Grid.Row" TargetName="contentPanel" Value="0"/>
+                                <Setter Property="Grid.Column" TargetName="headerPanel" Value="1"/>
+                                <Setter Property="Grid.Column" TargetName="contentPanel" Value="0"/>
+                                <Setter Property="Width" TargetName="ColumnDefinition0" Value="*"/>
+                                <Setter Property="Width" TargetName="ColumnDefinition1" Value="Auto"/>
+                                <Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
+                                <Setter Property="Height" TargetName="RowDefinition1" Value="0"/>
+                                <Setter Property="Margin" TargetName="headerPanel" Value="0,2,2,2"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="TextElement.Foreground" TargetName="templateRoot" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
     </Window.Resources>
     <Grid>
         <Grid Name="mainGrid" Margin="4" Background="{StaticResource backgroundBrush}"
@@ -204,6 +275,11 @@
             <Border Name="GamesHighlight" BorderThickness="1" Margin="10,140,0,0" Width="125" Height="42" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#33FFFFFF" BorderBrush="#55FFFFFF" Visibility="Hidden"/>
             <Border Name="TradersHighlight" BorderThickness="1" Margin="10,190,0,0" Width="125" Height="42" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#33FFFFFF" BorderBrush="#55FFFFFF" Visibility="Hidden"/>
             <Border Name="feHighlight" BorderThickness="1" Margin="10,240,0,0" Width="125" Height="42" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#33FFFFFF" BorderBrush="#55FFFFFF" Visibility="Hidden"/>
+
+            <TabControl Name="MainTabControl"
+                Style="{DynamicResource TabControlStyle1}"></TabControl>
+            
+
 
             <Image Name="RefreshImage" Margin="0,47,32,0" 
                    Width="16" Height="16" 
@@ -229,9 +305,10 @@
                VerticalAlignment="Top" 
                Stretch="Uniform" 
                Source="/FirstMate;component/Images/logo.png" />
-
-
-            <Ribbon x:Name="Ribbon"  Margin="0,50,0,0" Background="blue">
+            
+            <!--
+            <Ribbon x:Name="Ribbon" Visibility="Hidden"
+                    Margin="0,50,0,0" 
                 <Ribbon.QuickAccessToolBar>
                     <RibbonQuickAccessToolBar Visibility="Hidden"/>
                 </Ribbon.QuickAccessToolBar>
@@ -246,8 +323,7 @@
 
 
             </Ribbon>
-
-
+-->
             <TextBlock Name="Header" Text="Meow" Margin="202,23,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
                        Height="32" Width="162" FontFamily="Cooper Black" FontSize="28" Foreground="#FF000080">
                 <TextBlock.Effect>

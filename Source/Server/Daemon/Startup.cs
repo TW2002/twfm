@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿//using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
-using FirstMate;
+//using FirstMate;
 
 namespace Daemon
 {
@@ -11,7 +11,7 @@ namespace Daemon
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<FirstMateData>(options => options.UseSqlServer(localdb));
+            //services.AddDbContext<FirstMateData>(options => options.UseSqlServer(localdb));
         }
 
         //public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
