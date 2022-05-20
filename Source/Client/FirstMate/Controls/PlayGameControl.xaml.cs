@@ -24,5 +24,10 @@ namespace FirstMate.Controls
         {
             this.InitializeComponent();
         }
+
+        private void Control_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+
+        }
     }
 }

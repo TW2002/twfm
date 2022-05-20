@@ -8,7 +8,8 @@
     mc:Ignorable="d">
 
     <Grid Background="DarkBlue">
-        <local:RibbonControl/>
+        <local:RibbonControl Height="200"
+                             VerticalAlignment="Top"/>
 
     </Grid>
 </UserControl>
