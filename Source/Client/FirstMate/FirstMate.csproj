@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
@@ -12,7 +12,7 @@
     <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Pages\MainTabView.xaml" />
+    <None Remove="Pages\Main.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,8 +26,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.3" />
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.194" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.1.0-preview3" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621-preview" />
+    <PackageReference Include="Syncfusion.Ribbon.WinUI" Version="20.1.0.56" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
@@ -43,7 +44,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Pages\MainTabView.xaml">
+    <Page Update="Pages\Main.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

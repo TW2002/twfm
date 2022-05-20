@@ -7,7 +7,7 @@ namespace Daemon
 {
     public class Startup
     {
-        string localdb = "";
+        //string localdb = "";
 
         public void ConfigureServices(IServiceCollection services)
         {

@@ -19,38 +19,33 @@ using Windows.Foundation.Collections;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace FirstMate;
-
-/// <summary>
-/// Provides application-specific behavior to supplement the default Application class.
-/// </summary>
-public partial class App : Application
+namespace FirstMate
 {
     /// <summary>
-    /// Initializes the singleton application object.  This is the first line of authored code
-    /// executed, and as such is the logical equivalent of main() or WinMain().
+    /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
-    public App()
+    public partial class App : Application
     {
-        this.InitializeComponent();
+        /// <summary>
+        /// Initializes the singleton application object.  This is the first line of authored code
+        /// executed, and as such is the logical equivalent of main() or WinMain().
+        /// </summary>
+        public App()
+        {
+            this.InitializeComponent();
+        }
+
+        /// <summary>
+        /// Invoked when the application is launched normally by the end user.  Other entry points
+        /// will be used such as when the application is launched to open a specific file.
+        /// </summary>
+        /// <param name="args">Details about the launch request and process.</param>
+        protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
+        {
+            m_window = WindowManager.CreateWindow();
+            m_window.Activate();
+        }
+
+        private Window m_window;
     }
-
-    /// <summary>
-    /// Invoked when the application is launched normally by the end user.  Other entry points
-    /// will be used such as when the application is launched to open a specific file.
-    /// </summary>
-    /// <param name="args">Details about the launch request and process.</param>
-    protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
-    {
-        // Create the rootFrame and navigate to a TabView page.
-        Frame rootFrame = new();
-        rootFrame.Navigate(typeof(FirstMate.Pages.MainTabView), args.Arguments);
-
-        // Create the Main windows and activate.
-        m_window = new Main();
-        m_window.Content = rootFrame;
-        m_window.Activate();
-    }
-
-    private Window m_window;
 }
