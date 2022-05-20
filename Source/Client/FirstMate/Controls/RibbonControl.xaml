@@ -9,7 +9,33 @@
     mc:Ignorable="d">
 
     <Grid>
-        <ribbon:SfRibbon Name="Ribbon">
-        </ribbon:SfRibbon>
+		
+		<ribbon:SfRibbon x:Name="sfRibbon">
+			<ribbon:SfRibbon.RenderTransform>
+				<ScaleTransform ScaleX="1" ScaleY="0.75" />
+			</ribbon:SfRibbon.RenderTransform>
+			<ribbon:SfRibbon.Tabs>
+				<ribbon:RibbonTab Header="Home">
+					<ribbon:RibbonGroup Header="Database" />
+					<ribbon:RibbonGroup Header="Navidation" />
+				</ribbon:RibbonTab>
+				<ribbon:RibbonTab Header="Cashing" >
+					<ribbon:RibbonGroup Header="Clipboard" />
+
+					<ribbon:RibbonGroup Header="File" >
+						<ribbon:RibbonButton Content="Pictures"
+						>
+							<ribbon:RibbonButton.Icon>
+								<SymbolIcon Symbol="Pictures" />
+							</ribbon:RibbonButton.Icon>
+						</ribbon:RibbonButton>
+					</ribbon:RibbonGroup>
+				</ribbon:RibbonTab>
+				
+				<ribbon:RibbonTab Header="Combat" />
+				<ribbon:RibbonTab Header="Utility" />
+			</ribbon:SfRibbon.Tabs>
+		
+		</ribbon:SfRibbon>
     </Grid>
 </UserControl>

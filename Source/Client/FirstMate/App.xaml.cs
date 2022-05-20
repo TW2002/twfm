@@ -33,6 +33,8 @@ namespace FirstMate
         public App()
         {
             this.InitializeComponent();
+
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NjQyMDkyQDMyMzAyZTMxMmUzMEMxencxYUt4TUJERnZaN0hoWldyN0dQMndhaVRSc0ExZUxWazRWWlgyNG89");
         }
 
         /// <summary>
