@@ -27,28 +27,21 @@ namespace FirstMate.UserControls
             this.InitializeComponent();
         }
 
+        public void Reset()
+        {
+           MainRibbon.ResetSelectedTab();
+        }
+
         private void Ribbon_ButtonClick(Ribbon sender, ButtonClickEventArgs args)
         {
-            string s = args.SelectedItem.ToString();
+            //string s = args.SelectedItem.ToString();
         }
 
         private void Ribbon_SettingsSelected(object sender, RoutedEventArgs e)
         {
-            TabViewItem tab = new()
-            {
-                Header = $"Settings",
-                IconSource = new SymbolIconSource()
-                {
-                    Symbol = Symbol.Setting
-                },
-                Content = new UserControls.SettingsControl()
-                {
-                    DataContext = $"Settings"
-                }
-            };
-
             Window window = WindowManager.GetWindowForElement(this);
-            ((TabViewPage)window.Content).AddTabToTabs(tab);
+            TabViewPage page = window.Content as TabViewPage;
+            page.ShowSettingsTab();
         }
     }
 }

@@ -10,6 +10,7 @@
 
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <TabView x:Name="Tabs" 
+                             SelectionChanged="Tabs_SelectionChanged"
                              VerticalAlignment="Stretch"
                              AddTabButtonClick="Tabs_AddTabButtonClick"
                              TabCloseRequested="Tabs_TabCloseRequested"

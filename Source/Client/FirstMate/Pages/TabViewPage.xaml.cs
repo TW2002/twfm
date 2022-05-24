@@ -4,6 +4,7 @@ using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Navigation;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.DataTransfer;
+using System.Linq;
 
 
 namespace FirstMate.Pages
@@ -99,6 +100,32 @@ namespace FirstMate.Pages
 
             // Ensure that the height of the custom regions are the same as the titlebar.
             CustomDragRegion.Height = ShellTitlebarInset.Height = sender.Height;
+        }
+
+        public void ShowSettingsTab()
+        {
+            TabViewItem tab = (TabViewItem)Tabs.TabItems.Where(t => (t as TabViewItem).Header.ToString() == "Settings").FirstOrDefault();
+
+            if (tab == null)
+            {
+                tab = new()
+                {
+                    Header = $"Settings",
+                    IconSource = new SymbolIconSource()
+                    {
+                        Symbol = Symbol.Setting
+                    },
+                    Content = new UserControls.SettingsControl()
+                    {
+                        DataContext = $"Settings"
+                    }
+                };
+                AddTabToTabs(tab);
+            }
+            else
+            {
+                Tabs.SelectedItem = tab;
+            }
         }
 
         public void AddTabToTabs(TabViewItem tab)
@@ -213,6 +240,19 @@ namespace FirstMate.Pages
         private void Tabs_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
         {
             sender.TabItems.Remove(args.Tab);
+        }
+
+        private void Tabs_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var tabView = sender as TabView;
+            var tabViewItem = tabView.SelectedItem as TabViewItem;
+            if (tabViewItem == null) return;
+
+            if (tabViewItem.Content.GetType() == typeof(UserControls.PlayGameControl))
+            {
+                var gameControl = tabViewItem.Content as UserControls.PlayGameControl;
+                gameControl.ResetRibbon();
+            }
         }
     }
 }

@@ -29,5 +29,10 @@ namespace FirstMate.UserControls
         {
 
         }
+
+        public void ResetRibbon()
+        {
+            MainRibbonControl.Reset();
+        }
     }
 }

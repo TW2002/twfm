@@ -8,7 +8,7 @@
     mc:Ignorable="d">
 
     <Grid Background="DarkBlue">
-        <local:RibbonControl />
+        <local:RibbonControl x:Name="MainRibbonControl"/>
 
     </Grid>
 </UserControl>

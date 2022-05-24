@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation;
+using Microsoft.UI.Xaml.Input;
 
 namespace Controls
 {
@@ -22,34 +23,39 @@ namespace Controls
 
         public event EventHandler<RoutedEventArgs> SettingsSelected;
 
+
+        private NavigationViewItem lastSelecteItem;
+
+
         public Ribbon()
         {
-            navigationViewItems = new();
+            tabItems = new();
 
             DependencyProperty MenuItemsProperty = DependencyProperty.Register(
             nameof(Items), typeof(NavigationViewItem), typeof(Ribbon),
             new PropertyMetadata(default(ItemsControl)));
 
-            //DependencyProperty NavigationViewItemsProperty = DependencyProperty.Register(
-            //nameof(navigationViewItems), typeof(NavigationViewItem), typeof(Ribbon),
-            //new PropertyMetadata(default(ItemsControl)));
-
-
             this.DefaultStyleKey = typeof(Ribbon);
-
-
-
-            //Items = new();
-
-            Loaded += Control_Loaded;
         }
 
-        private void Control_Loaded(object sender, RoutedEventArgs e)
+
+        /// <summary>
+        /// Reset the selected item back to the previously selected item.
+        /// </summary>
+        public void ResetSelectedTab()
         {
+            if (navigationView == null) return;
 
+            // Get the currently selected Tab Item.
+            var item = navigationView.SelectedItem as NavigationViewItem;
 
+            // Item will be null if Settings is selected.
+            if(item.Content == null)
+            {
+                // Restore the previously selected tab from SelcetionChanged event.
+                navigationView.SelectedItem = lastSelecteItem;
+            }
         }
-
 
 
         protected override void OnApplyTemplate()
@@ -77,10 +83,10 @@ namespace Controls
 
             if (navigationView == null) return;
 
-            navigationViewItems.Clear();
+            tabItems.Clear();
             foreach (RibbonTab tab in Items)
             {
-                navigationViewItems.Add(new NavigationViewItem()
+                tabItems.Add(new NavigationViewItem()
                 {
                     Content = tab.Header,
                     AccessKey = tab.AccessKey,
@@ -100,12 +106,15 @@ namespace Controls
             }
 
 
-            navigationView.MenuItemsSource = navigationViewItems;
-            navigationView.SelectedItem = navigationViewItems.FirstOrDefault();
+            navigationView.MenuItemsSource = tabItems;
+            navigationView.SelectedItem = tabItems.FirstOrDefault();
+            lastSelecteItem = tabItems.FirstOrDefault();
 
             navigationView.SelectionChanged += NavigationView_SelectionChanged;
 
         }
+
+
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs e)
         {
@@ -114,6 +123,9 @@ namespace Controls
                 if (SettingsSelected != null)
                 {
                     SettingsSelected.Invoke(this, new RoutedEventArgs());
+
+                    //TODO - Select previously selected item.
+                    //sender.SelectedItem = tabItems.FirstOrDefault();
                 }
             }
             else
@@ -126,12 +138,25 @@ namespace Controls
                     ButtonClick.Invoke(this, args);
                 }
             }
+
+            // Get the currently selected item.
+            var item = sender.SelectedItem as NavigationViewItem;
+
+            // Get the tab item for the selected tab.
+            var sourceitem = tabItems.Where(n => n == item).FirstOrDefault();
+
+            // Item will not be found if settigns button was seleted.
+            if (sourceitem != null)
+            {
+                // Save the item to be restore by ResetSelectedTab
+                lastSelecteItem = sourceitem;
+            }
         }
 
         private Grid rootGrid;
 
         private NavigationView navigationView;
-        private List<NavigationViewItem> navigationViewItems;
+        private List<NavigationViewItem> tabItems;
 
         private RibbonGroup ribbonGroup;
 
