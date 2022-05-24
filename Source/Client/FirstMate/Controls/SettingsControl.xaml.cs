@@ -18,17 +18,16 @@ using Windows.Foundation.Collections;
 
 namespace FirstMate.Controls
 {
-    public sealed partial class RibbonControl : UserControl
+    public sealed partial class SettingsControl : UserControl
     {
-        public RibbonControl()
+        public SettingsControl()
         {
             this.InitializeComponent();
         }
 
-        private void Ribbon_SelectionChanged(object sender, RoutedEventArgs args)
+        private void NavigationView_SelectionChanged8(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
-            //NavigationViewItem selected = args.SelectedItem as NavigationViewItem;
-            String s = args.ToString();
+
         }
     }
 }

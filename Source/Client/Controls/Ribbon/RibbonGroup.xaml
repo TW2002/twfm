@@ -1,0 +1,25 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Controls">
+
+
+    <ControlTemplate x:Key="RibbonGroup" TargetType="local:RibbonGroup">
+        <Grid x:Name="rootGrid">
+            <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+            </Border>
+
+
+            <!--            <ContentPresenter Content="{TemplateBinding ContentControl.Content}"
+                              Margin="{TemplateBinding Padding}"/>
+                    <ItemsPresenter /> -->
+        </Grid>
+    </ControlTemplate>
+
+    <Style TargetType="local:RibbonGroup">
+        <Setter Property="Template" Value="{StaticResource RibbonGroup}" />
+    </Style>
+
+</ResourceDictionary>

@@ -1,10 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:controls="using:FirstMate.Ribbon">
+                    xmlns:local="using:FirstMate.Ribbon">
 
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Dark">
-            <!--  TODO: This still seems a bit dark?  -->
             <SolidColorBrush x:Key="ContextualTabBackground"
                              Color="{ThemeResource SystemAltMediumHighColor}" />
         </ResourceDictionary>
@@ -24,25 +23,20 @@
                      Color="{ThemeResource SystemControlChromeLowAcrylicWindowBrush}" />
 
     <Style BasedOn="{StaticResource DefaultRibbonItemStyle}"
-           TargetType="controls:RibbonItem" />
+           TargetType="local:RibbonItem" />
 
     <Style x:Key="DefaultRibbonItemStyle"
            BasedOn="{StaticResource DefaultCommandBarStyle}"
-           TargetType="controls:RibbonItem">
+           TargetType="local:RibbonItem">
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="DefaultLabelPosition" Value="Right" />
         <Setter Property="Background" Value="{ThemeResource NormalTabBackground}" />
-        <!--
-            Is there a way to prevent the overflow buttonribbon:Ribbon. from showing if there aren't any buttons to send to the overflow menu?
-            (See this message in the WinUI channel: https://discord.com/channels/372137812037730304/671870147354427422/771057634203402300 )
-            Hardcoding the height of the CommandBar works, but it's a bit of a hack.
-        -->
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
     </Style>
 
     <Style x:Key="RibbonItemAcrylicStyle"
            BasedOn="{StaticResource DefaultRibbonItemStyle}"
-           TargetType="controls:RibbonItem">
+           TargetType="local:RibbonItem">
         <Setter Property="Background" Value="{ThemeResource NormalTabAcrylicBackground}" />
     </Style>
 
@@ -55,7 +49,6 @@
                                  Content="{Binding Header}"
                                  Visibility="{Binding Visibility}">
             <NavigationViewItem.Resources>
-                <!--  TODO: These should reference RibbonItem-specific resources so they can overriden  -->
                 <SolidColorBrush x:Key="TopNavigationViewItemForeground"
                                  Color="{ThemeResource SystemAccentColor}" />
                 <SolidColorBrush x:Key="TopNavigationViewItemForegroundSelected"
@@ -64,9 +57,6 @@
                                  Color="{ThemeResource SystemAccentColorLight2}" />
                 <SolidColorBrush x:Key="TopNavigationViewItemForegroundPressed"
                                  Color="{ThemeResource SystemAccentColorLight2}" />
-
-                <!--  TODO: Set BackgroundSelected to match ContextualTabBackground  -->
-                <!--<StaticResource x:Key="TopNavigationViewItemBackgroundSelected" ResourceKey="ContextualTabBackgroundColor" />-->
             </NavigationViewItem.Resources>
         </NavigationViewItem>
     </DataTemplate>
