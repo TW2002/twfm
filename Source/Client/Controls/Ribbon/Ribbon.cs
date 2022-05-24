@@ -20,6 +20,8 @@ namespace Controls
         /// </summary>
         public event TypedEventHandler<Ribbon, ButtonClickEventArgs> ButtonClick;
 
+        public event EventHandler<RoutedEventArgs> SettingsSelected;
+
         public Ribbon()
         {
             navigationViewItems = new();
@@ -107,14 +109,23 @@ namespace Controls
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs e)
         {
-            ButtonClickEventArgs args = new();
-            args.SelectedItem = e.SelectedItem;
-
-            if (ButtonClick != null)
+            if (e.IsSettingsSelected)
             {
-                ButtonClick.Invoke(this, args);
+                if (SettingsSelected != null)
+                {
+                    SettingsSelected.Invoke(this, new RoutedEventArgs());
+                }
             }
+            else
+            {
+                ButtonClickEventArgs args = new();
+                args.SelectedItem = e.SelectedItem;
 
+                if (ButtonClick != null)
+                {
+                    ButtonClick.Invoke(this, args);
+                }
+            }
         }
 
         private Grid rootGrid;

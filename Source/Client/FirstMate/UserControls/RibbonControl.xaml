@@ -14,7 +14,9 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <c:Ribbon Background="Green" ButtonClick="Ribon_ButtonClick" >
+        <c:Ribbon Background="Green" 
+                  ButtonClick="Ribbon_ButtonClick" 
+                  SettingsSelected="Ribbon_SettingsSelected">
             <c:RibbonTab Header="Home"    AccessKey="H" Icon="Home">
                 <c:RibbonGroup Header="Database">
 

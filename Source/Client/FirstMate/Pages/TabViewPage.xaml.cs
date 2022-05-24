@@ -104,6 +104,7 @@ namespace FirstMate.Pages
         public void AddTabToTabs(TabViewItem tab)
         {
             Tabs.TabItems.Add(tab);
+            Tabs.SelectedItem = tab;
         }
 
         // Create a new Window once the Tab is dragged outside.
@@ -206,6 +207,7 @@ namespace FirstMate.Pages
             };
 
             sender.TabItems.Add(tab);
+            sender.SelectedItem = tab;
         }
 
         private void Tabs_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)

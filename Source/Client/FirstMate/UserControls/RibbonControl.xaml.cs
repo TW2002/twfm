@@ -13,6 +13,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Controls;
+using FirstMate.Pages;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -26,9 +27,28 @@ namespace FirstMate.UserControls
             this.InitializeComponent();
         }
 
-        private void Ribon_ButtonClick(Ribbon sender, ButtonClickEventArgs args)
+        private void Ribbon_ButtonClick(Ribbon sender, ButtonClickEventArgs args)
         {
             string s = args.SelectedItem.ToString();
+        }
+
+        private void Ribbon_SettingsSelected(object sender, RoutedEventArgs e)
+        {
+            TabViewItem tab = new()
+            {
+                Header = $"Settings",
+                IconSource = new SymbolIconSource()
+                {
+                    Symbol = Symbol.Setting
+                },
+                Content = new UserControls.SettingsControl()
+                {
+                    DataContext = $"Settings"
+                }
+            };
+
+            Window window = WindowManager.GetWindowForElement(this);
+            ((TabViewPage)window.Content).AddTabToTabs(tab);
         }
     }
 }
