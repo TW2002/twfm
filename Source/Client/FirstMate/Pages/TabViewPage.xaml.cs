@@ -199,7 +199,7 @@ namespace FirstMate.Pages
                 {
                     Symbol = Symbol.Globe
                 },
-                Content = new Controls.NewTabControl()
+                Content = new UserControls.NewTabControl()
                 {
                     DataContext = $"NewTab"
                 }

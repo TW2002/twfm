@@ -25,7 +25,7 @@ namespace FirstMate
                     {
                         Symbol = Symbol.Globe
                     },
-                    Content = new Controls.PlayGameControl()
+                    Content = new UserControls.PlayGameControl()
                     {
                         DataContext = $"NewTab"
                     }

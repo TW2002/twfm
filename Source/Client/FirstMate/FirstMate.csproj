@@ -12,12 +12,10 @@
     <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Controls\SettingsControl.xaml" />
+    <None Remove="UserControls\SettingsControl.xaml" />
     <None Remove="Images\lens.png" />
     <None Remove="Images\logo.png" />
     <None Remove="Pages\Main.xaml" />
-    <None Remove="Ribbon\Ribbon.xaml" />
-    <None Remove="Ribbon\RibbonItem.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,16 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\SettingsControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="Ribbon\RibbonItem.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="Ribbon\Ribbon.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

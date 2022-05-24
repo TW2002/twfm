@@ -16,16 +16,16 @@ using Windows.Foundation.Collections;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace FirstMate.Controls
+namespace FirstMate.UserControls
 {
-    public sealed partial class SettingsControl : UserControl
+    public sealed partial class PlayGameControl : UserControl
     {
-        public SettingsControl()
+        public PlayGameControl()
         {
             this.InitializeComponent();
         }
 
-        private void NavigationView_SelectionChanged8(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        private void Control_SizeChanged(object sender, SizeChangedEventArgs e)
         {
 
         }

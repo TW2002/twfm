@@ -12,17 +12,23 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Controls;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace FirstMate.Controls
+namespace FirstMate.UserControls
 {
-    public sealed partial class GameViewControl : UserControl
+    public sealed partial class RibbonControl : UserControl
     {
-        public GameViewControl()
+        public RibbonControl()
         {
             this.InitializeComponent();
+        }
+
+        private void Ribon_ButtonClick(Ribbon sender, ButtonClickEventArgs args)
+        {
+            string s = args.SelectedItem.ToString();
         }
     }
 }

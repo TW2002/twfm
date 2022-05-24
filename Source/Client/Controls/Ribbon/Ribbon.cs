@@ -1,11 +1,13 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Markup;
+using Microsoft.UI.Dispatching;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Foundation;
 
 namespace Controls
 {
@@ -13,7 +15,10 @@ namespace Controls
     [ContentProperty(Name = nameof(Items))]
     public class Ribbon : ItemsControl
     {
-        //public List<Button> Items { get; set; }
+        /// <summary>
+        /// Event raised when user click on a ribbon button.
+        /// </summary>
+        public event TypedEventHandler<Ribbon, ButtonClickEventArgs> ButtonClick;
 
         public Ribbon()
         {
@@ -40,7 +45,10 @@ namespace Controls
         private void Control_Loaded(object sender, RoutedEventArgs e)
         {
 
+
         }
+
+
 
         protected override void OnApplyTemplate()
         {
@@ -93,7 +101,19 @@ namespace Controls
             navigationView.MenuItemsSource = navigationViewItems;
             navigationView.SelectedItem = navigationViewItems.FirstOrDefault();
 
+            navigationView.SelectionChanged += NavigationView_SelectionChanged;
 
+        }
+
+        private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs e)
+        {
+            ButtonClickEventArgs args = new();
+            args.SelectedItem = e.SelectedItem;
+
+            if (ButtonClick != null)
+            {
+                ButtonClick.Invoke(this, args);
+            }
 
         }
 

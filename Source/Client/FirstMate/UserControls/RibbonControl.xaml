@@ -1,5 +1,5 @@
-﻿<UserControl x:Class="FirstMate.Controls.RibbonControl"
-      xmlns:local="using:FirstMate.Controls"
+﻿<UserControl x:Class="FirstMate.UserControls.RibbonControl"
+      xmlns:local="using:FirstMate.UserControls"
       xmlns:c="using:Controls"
 
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -14,7 +14,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <c:Ribbon Background="Green" >
+        <c:Ribbon Background="Green" ButtonClick="Ribon_ButtonClick" >
             <c:RibbonTab Header="Home"    AccessKey="H" Icon="Home">
                 <c:RibbonGroup Header="Database">
 

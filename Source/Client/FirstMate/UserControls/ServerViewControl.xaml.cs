@@ -16,19 +16,13 @@ using Windows.Foundation.Collections;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace FirstMate.Controls
+namespace FirstMate.UserControls
 {
-    public sealed partial class RibbonControl : UserControl
+    public sealed partial class ServerViewControl : UserControl
     {
-        public RibbonControl()
+        public ServerViewControl()
         {
             this.InitializeComponent();
-        }
-
-        private void Ribbon_SelectionChanged(object sender, RoutedEventArgs args)
-        {
-            //NavigationViewItem selected = args.SelectedItem as NavigationViewItem;
-            String s = args.ToString();
         }
     }
 }

@@ -16,18 +16,13 @@ using Windows.Foundation.Collections;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace FirstMate.Controls
+namespace FirstMate.UserControls
 {
-    public sealed partial class PlayGameControl : UserControl
+    public sealed partial class NewTabControl : UserControl
     {
-        public PlayGameControl()
+        public NewTabControl()
         {
             this.InitializeComponent();
-        }
-
-        private void Control_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-
         }
     }
 }
