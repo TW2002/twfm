@@ -8,26 +8,54 @@
     mc:Ignorable="d">
 
     <Grid>
-        <NavigationView x:Name="nvSample8" Grid.Row="1" Height="460"
-                        PaneDisplayMode="Left"
-                        IsTabStop="False"
-                        SelectionChanged="NavigationView_SelectionChanged8">
+        <NavigationView Name="SettingsNavigation" 
+                        Height="460" PaneDisplayMode="Left" IsTabStop="False"
+                        IsBackButtonVisible="Collapsed" 
+                        IsSettingsVisible="False"
+                        SelectionChanged="NavigationView_SelectionChanged">
+            <NavigationView.AutoSuggestBox>
+                <AutoSuggestBox PlaceholderText="Type a setting name"
+                                TextChanged="AutoSuggest_TextChanged"
+                                QueryIcon="Find" />
+            </NavigationView.AutoSuggestBox>
             <NavigationView.MenuItems>
-                <NavigationViewItem Content="Home" Icon="Home" ToolTipService.ToolTip="Home" Tag="SamplePage1"/>
-                <NavigationViewItem Content="Account" Icon="Contact" ToolTipService.ToolTip="Account" Tag="SamplePage2">
+                <NavigationViewItem Content="Account" Icon="Contact" 
+                                    ToolTipService.ToolTip="Account and Profile settings." 
+                                    IsExpanded="True">
                     <NavigationViewItem.MenuItems>
-                        <NavigationViewItem Content="Mail" Icon="Mail" ToolTipService.ToolTip="Mail" Tag="SamplePage3"/>
-                        <NavigationViewItem Content="Calendar" Icon="Calendar" ToolTipService.ToolTip="Calendar" Tag="SamplePage4"/>
+                        <NavigationViewItem Name="AccountSettings" Content="My Account" Icon="Contact" Tag="MyAccount"
+                                            ToolTipService.ToolTip="Your account and login." />
+                        <NavigationViewItem Content="Player Profiles" Icon="Placeholder" 
+                                            ToolTipService.ToolTip="" Tag=""/>
+                        <NavigationViewItem Content="Teams" Icon="Placeholder" 
+                                            ToolTipService.ToolTip="" Tag=""/>
                     </NavigationViewItem.MenuItems>
                 </NavigationViewItem>
-                <NavigationViewItem Content="Document options" Icon="Page2" ToolTipService.ToolTip="Document options" SelectsOnInvoked="False">
+                <NavigationViewItem Content="Database" Icon="PlaceHolder"
+                                    ToolTipService.ToolTip="Document options" >
                     <NavigationViewItem.MenuItems>
-                        <NavigationViewItem Content="Create new" Icon="NewFolder" ToolTipService.ToolTip="Create new" Tag="SamplePage5"/>
-                        <NavigationViewItem Content="Upload file" Icon="OpenLocal" ToolTipService.ToolTip="Upload file" Tag="SamplePage6"/>
+                        <NavigationViewItem Name="GameSettings" Content="Game" Icon="Placeholder" ToolTipService.ToolTip="Create new" Tag=""/>
+                        <NavigationViewItem Content="Login" Icon="Placeholder" ToolTipService.ToolTip="Upload file" Tag=""/>
+                        <NavigationViewItem Content="Autorun" Icon="Placeholder" ToolTipService.ToolTip="Upload file" Tag=""/>
+                        <NavigationViewItem Content="QuickLink" Icon="Placeholder" ToolTipService.ToolTip="Upload file" Tag=""/>
+                    </NavigationViewItem.MenuItems>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Terminal" Icon="Placeholder" ToolTipService.ToolTip="Document options">
+                    <NavigationViewItem.MenuItems>
+                        <NavigationViewItem Name="ProxySettings"  Content="Proxy" Icon="Placeholder" ToolTipService.ToolTip="Create new" Tag=""/>
+                        <NavigationViewItem Content="Connections" Icon="Placeholder" ToolTipService.ToolTip="Upload file" Tag=""/>
+                        <NavigationViewItem Content="Logging" Icon="Placeholder" ToolTipService.ToolTip="Upload file" Tag=""/>
+                        <NavigationViewItem Content="Colors" Icon="Placeholder" ToolTipService.ToolTip="Upload file" Tag=""/>
+                    </NavigationViewItem.MenuItems>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Appearance" Icon="Placeholder" ToolTipService.ToolTip="Document options" >
+                    <NavigationViewItem.MenuItems>
+                        <NavigationViewItem Name="ThemeSettings" Content="Theme and Color" Icon="Placeholder" ToolTipService.ToolTip="Create new" Tag=""/>
+                        <NavigationViewItem Content="Fonts and Scaling" Icon="Placeholder" ToolTipService.ToolTip="Upload file" Tag=""/>
                     </NavigationViewItem.MenuItems>
                 </NavigationViewItem>
             </NavigationView.MenuItems>
-            <Frame x:Name="contentFrame8" />
+            <Frame x:Name="contentFrame" />
         </NavigationView>
     </Grid>
 </UserControl>

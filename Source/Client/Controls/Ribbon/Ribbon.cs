@@ -105,7 +105,6 @@ namespace Controls
                 //ribbonGroup = ItemContainerGenerator.ContainerFromItem(item) as RibbonGroup;
             }
 
-
             navigationView.MenuItemsSource = tabItems;
             navigationView.SelectedItem = tabItems.FirstOrDefault();
             lastSelecteItem = tabItems.FirstOrDefault();

@@ -15,7 +15,8 @@
             </Border>
 
             <!-- MenuItemsSource="{TemplateBinding Items}" -->
-            <NavigationView IsBackButtonVisible="Collapsed" PaneDisplayMode="Top">
+            <NavigationView IsBackButtonVisible="Collapsed" PaneDisplayMode="Top" 
+                            MenuItemsSource="{Binding tabItems, Mode=OneWay}">
                             
                 <NavigationView.AutoSuggestBox>
                     <AutoSuggestBox QueryIcon="Find" AutomationProperties.Name="Search" 

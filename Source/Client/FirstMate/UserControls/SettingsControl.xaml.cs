@@ -23,9 +23,65 @@ namespace FirstMate.UserControls
         public SettingsControl()
         {
             this.InitializeComponent();
+
+            //SettingsNavigation.SelectedItem = SettingsNavigation.MenuItems.ElementAt(1);
+            //AccountSettings.MenuItems.First()
+
+            //SettingsNavigation.SelectedItem = SettingsNavigation.MenuItems
+            //    .OfType<NavigationViewItem>().First();
+            SettingsNavigation.SelectedItem = AccountSettings;
         }
 
-        private void NavigationView_SelectionChanged8(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            var selectedItem = args.SelectedItem as NavigationViewItem;
+            if (selectedItem != null)
+            {
+                if (selectedItem.Tag == null)
+                {
+                    if (!selectedItem.IsExpanded)
+                    {
+                        foreach (NavigationViewItem item in sender.MenuItems)
+                        {
+                            if (item.Content != selectedItem.Content)
+                            {
+                                item.IsExpanded = false;
+                            }
+                        }
+
+                        //if (!selectedItem.IsChildSelected)
+                        if (true)
+                        {
+                            switch (selectedItem.Content.ToString())
+                            {
+                                case "Account":
+                                    SettingsNavigation.SelectedItem = AccountSettings;
+                                    break;
+                                case "Database":
+                                    SettingsNavigation.SelectedItem = GameSettings;
+                                    break;
+                                case "Terminal":
+                                    SettingsNavigation.SelectedItem = ProxySettings;
+                                    break;
+                                case "Appearance":
+                                    SettingsNavigation.SelectedItem = ThemeSettings;
+                                    break;
+                            }
+                        }
+                    }//sender.SelectedItem = sender.MenuItems[1];
+                }
+                else
+                {
+                    //string selectedItemTag = selectedItem.Tag.ToString();
+                    //sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
+                    string pageName = "FirstMate.Pages." + selectedItem.Tag + "Settings";
+                    Type pageType = Type.GetType(pageName);
+                    contentFrame.Navigate(pageType);
+                }
+            }
+        }
+
+        private void AutoSuggest_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
 
         }

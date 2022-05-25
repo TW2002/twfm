@@ -12,6 +12,8 @@
     <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Pages\MyAccountSettings.xaml" />
+    <None Remove="UserControls\SettingItemControl.xaml" />
     <None Remove="UserControls\SettingsControl.xaml" />
     <None Remove="Images\lens.png" />
     <None Remove="Images\logo.png" />
@@ -45,6 +47,16 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Controls\Controls.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UserControls\SettingItemControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Pages\MyAccountSettings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\SettingsControl.xaml">
