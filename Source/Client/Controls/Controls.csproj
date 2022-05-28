@@ -7,15 +7,38 @@
     <UseWinUI>true</UseWinUI>
   </PropertyGroup>
   <ItemGroup>
+    <Content Remove="Images\refresh2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Images\refresh.png" />
+    <None Remove="Images\ScannerBG.png" />
+    <None Remove="Navigation\Scanner.xaml" />
     <None Remove="Ribbon\NavTest.xaml" />
     <None Remove="Ribbon\Ribbon.xaml" />
     <None Remove="Ribbon\RibbonGroup.xaml" />
-    <None Remove="Transform\TransformAdorner.xaml" />
+    <None Remove="Terminal\Display.xaml" />
+    <None Remove="Utility\TransformAdorner.xaml" />
   </ItemGroup>
 
   <ItemGroup>
       <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.3" />
       <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.194" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Navigation\Scanner.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Terminal\Display.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Transform\TransformAdorner.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>
@@ -26,12 +49,6 @@
     <Page Update="Ribbon\RibbonGroup.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="Transform\TransformAdorner.xaml">
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
 

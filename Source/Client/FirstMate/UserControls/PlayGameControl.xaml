@@ -1,5 +1,6 @@
 ﻿<UserControl
     x:Class="FirstMate.UserControls.PlayGameControl"
+    xmlns:c="using:Controls"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:FirstMate.UserControls"
@@ -7,8 +8,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="DarkBlue">
+    <Grid Background="Magenta" >
         <local:RibbonControl x:Name="MainRibbonControl"/>
+        <c:Display />
+        <c:Scanner />
 
     </Grid>
 </UserControl>

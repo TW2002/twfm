@@ -1,0 +1,51 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Controls">
+
+    <!-- Default Display template -->
+    <ControlTemplate x:Key="ScannerTemplate" TargetType="local:Scanner">
+        <local:TransformAdorner
+                Height="250" Width="250" Padding="10"
+                VerticalAlignment="Top" HorizontalAlignment="Left">
+
+            <Viewbox Stretch="Uniform" HorizontalAlignment="Stretch">
+                <Grid>
+                    <TextBox Name="textBox1" Foreground="White" Background="Black" Visibility="Collapsed" />
+                    <Image Name="BackgroundImage" Stretch="Fill"  
+                           Source="ms-appx:///Controls/Images/ScannerBG.png" 
+                           Margin="-60" Width="420" Height="420" Opacity=".5" Visibility="Visible" />
+                    <Button Name="ButtonQ" Visibility="Collapsed" Template="{StaticResource Hexagon1}" Margin="21,57,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <Button Name="ButtonW" Template="{StaticResource Hexagon1}" Margin="100,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                    <Button Name="ButtonE" Template="{StaticResource Hexagon1}" Margin="179,57,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                    <Button Name="ButtonA" Template="{StaticResource Hexagon1}" Margin="21,151,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                    <Button Name="ButtonS" Template="{StaticResource Hexagon1}" Margin="100,198,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                    <Button Name="ButtonD" Template="{StaticResource Hexagon1}" Margin="179,151,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                    <Button Name="ButtonX" Template="{StaticResource Hexagon1}" Margin="100,104,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                    <Image Name="RefreshImage" Stretch="Uniform" Visibility="Collapsed"
+                           Source="ms-appx:///Controls/Images/refresh.png" Opacity="0.5" 
+                           VerticalAlignment="Bottom" HorizontalAlignment="Right" 
+                           Margin="0,0,50,12" Width="36" Height="36" />
+
+                    <SymbolIcon Symbol="Refresh" Foreground="#FFC0C0C0" Margin="0,0,50,12"
+                            VerticalAlignment="Bottom" HorizontalAlignment="Right" />
+
+                    <TextBlock Height="23" HorizontalAlignment="Left" Margin="21,13,0,0" x:Name="SectorLabel" VerticalAlignment="Top" Foreground="Cyan" />
+                </Grid>
+            </Viewbox>
+
+        </local:TransformAdorner>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="Hexagon1" TargetType="Button">
+        <Path x:Name="Hexagon1" Data="M 0 45 L 25 0 L 75, 0 L 100 45 L 75 90 L 25 90 Z" Opacity="1" Fill="#10A9A9A9" StrokeThickness="5" Stroke="#32A9A9A9"></Path>
+    </ControlTemplate>
+    <ControlTemplate x:Key="Refresh" TargetType="Button">
+    </ControlTemplate>
+
+
+    <Style TargetType="local:Scanner">
+        <Setter Property="Template" Value="{StaticResource ScannerTemplate}" />
+    </Style>
+
+</ResourceDictionary>
