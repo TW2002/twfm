@@ -1,0 +1,12 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Default">
+            <SolidColorBrush x:Key="SettingsBackgroundBrush" Color="Red"/>
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+
+
+</ResourceDictionary>

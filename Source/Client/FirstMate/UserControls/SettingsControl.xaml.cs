@@ -74,9 +74,10 @@ namespace FirstMate.UserControls
                 {
                     //string selectedItemTag = selectedItem.Tag.ToString();
                     //sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
-                    string pageName = "FirstMate.Pages." + selectedItem.Tag + "Settings";
-                    Type pageType = Type.GetType(pageName);
-                    contentFrame.Navigate(pageType);
+                    //string pageName = "FirstMate.Pages." + selectedItem.Tag + "Settings";
+                    Type pageType = Type.GetType("FirstMate.Pages.SettingsPage");
+                    //contentFrame.Navigate(pageType);
+                    contentFrame.Navigate(pageType, selectedItem.Tag as string);
                 }
             }
         }

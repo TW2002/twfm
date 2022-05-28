@@ -9,7 +9,7 @@
 
     <Grid>
         <NavigationView Name="SettingsNavigation" 
-                        Height="460" PaneDisplayMode="Left" IsTabStop="False"
+                        PaneDisplayMode="Left" IsTabStop="False"
                         IsBackButtonVisible="Collapsed" 
                         IsSettingsVisible="False"
                         SelectionChanged="NavigationView_SelectionChanged">
@@ -25,8 +25,8 @@
                     <NavigationViewItem.MenuItems>
                         <NavigationViewItem Name="AccountSettings" Content="My Account" Icon="Contact" Tag="MyAccount"
                                             ToolTipService.ToolTip="Your account and login." />
-                        <NavigationViewItem Content="Player Profiles" Icon="Placeholder" 
-                                            ToolTipService.ToolTip="" Tag=""/>
+                        <NavigationViewItem Content="Player Profiles" Icon="Placeholder" Tag="Profiles"
+                                            ToolTipService.ToolTip="" />
                         <NavigationViewItem Content="Teams" Icon="Placeholder" 
                                             ToolTipService.ToolTip="" Tag=""/>
                     </NavigationViewItem.MenuItems>
@@ -34,8 +34,9 @@
                 <NavigationViewItem Content="Database" Icon="PlaceHolder"
                                     ToolTipService.ToolTip="Document options" >
                     <NavigationViewItem.MenuItems>
-                        <NavigationViewItem Name="GameSettings" Content="Game" Icon="Placeholder" ToolTipService.ToolTip="Create new" Tag=""/>
-                        <NavigationViewItem Content="Login" Icon="Placeholder" ToolTipService.ToolTip="Upload file" Tag=""/>
+                        <NavigationViewItem Name="GameSettings" Content="Game" Icon="Placeholder" 
+                                            ToolTipService.ToolTip="Create new" Tag="Game"/>
+                        <NavigationViewItem Content="Login" Icon="Placeholder" ToolTipService.ToolTip="Upload file" Tag="Login"/>
                         <NavigationViewItem Content="Autorun" Icon="Placeholder" ToolTipService.ToolTip="Upload file" Tag=""/>
                         <NavigationViewItem Content="QuickLink" Icon="Placeholder" ToolTipService.ToolTip="Upload file" Tag=""/>
                     </NavigationViewItem.MenuItems>
