@@ -17,10 +17,12 @@ namespace Controls
 {
     public sealed class Display : Control
     {
+        public event EventHandler<RoutedEventArgs> MoveResizeClick;
+
+
         public Display()
         {
             DefaultStyleKey = typeof(Display);
-
         }
 
         protected override void OnApplyTemplate()
@@ -28,14 +30,17 @@ namespace Controls
             var terminalDisplay = GetTemplateChild("TerminalDisplay") as RichTextBlock;
             if (terminalDisplay == null) return;
 
-            Run run = new Run();
+            //terminalDisplay.ContextFlyout.Opening += Menu_Opening;
+            //terminalDisplay.SelectionFlyout.Opening += Menu_Opening;
+
+
 
             // Customize some properties on the RichTextBlock.
-            terminalDisplay.IsTextSelectionEnabled = true;
-            terminalDisplay.TextWrapping = TextWrapping.Wrap;
-            run.Text = "This is some sample text to show the wrapping behavior.";
-            //richTextBlock.Width = 200;
-            run.Foreground = new SolidColorBrush(Colors.LimeGreen);
+            Run run = new()
+            {
+                Text = "Ready for Combat!",
+                Foreground = new SolidColorBrush(Colors.LimeGreen)
+            };
 
             // Add the Run to the Paragraph, the Paragraph to the RichTextBlock.
             Paragraph paragraph = new();
@@ -47,5 +52,28 @@ namespace Controls
 
 
         }
+
+        //private void Menu_Opening(object sender, object e)
+        //{
+        //    AppBarButton item = new()
+        //    {
+        //        //Command = new StandardUICommand(StandardUICommandKind.Share)
+        //        Icon = new SymbolIcon(Symbol.FullScreen),
+        //        Label = "Move / Resize"
+        //    };
+        //    item.Click += MoveResize_Clicked;
+
+        //    //terminalDisplay.ContextFlyout.Items.Add(myButton);
+        //    var flyout = sender as TextCommandBarFlyout;
+        //    flyout.SecondaryCommands.Add(item);
+        //}
+
+        //private void MoveResize_Clicked(object sender, RoutedEventArgs e)
+        //{
+        //    if (MoveResizeClick != null)
+        //    {
+        //        MoveResizeClick.Invoke(this, new RoutedEventArgs());
+        //    }
+        //}
     }
 }

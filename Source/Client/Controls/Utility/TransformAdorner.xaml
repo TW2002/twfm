@@ -9,7 +9,7 @@
         <Grid DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}}">
             <ContentPresenter Content="{TemplateBinding ContentControl.Content}"
                               Margin="{TemplateBinding Padding}"/>
-            <Grid Opacity="1" Name="ItemDecorator" Visibility="Visible">
+            <Grid Opacity="1" Name="ItemDecorator" Visibility="Collapsed">
                 <!-- Hidden container for Move and Rotate thumbs -->
                 <Grid Opacity="0" Margin="-3" >
                     <Thumb Name="MoveThumb" />
@@ -57,6 +57,7 @@
                 </Grid>
             </Grid>
         </Grid>
+
     </ControlTemplate>
 
     <!-- Style for round thumb corners -->

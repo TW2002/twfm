@@ -10,8 +10,12 @@
 
     <Grid Background="Magenta" >
         <local:RibbonControl x:Name="MainRibbonControl"/>
-        <c:Display />
-        <c:Scanner />
-
+        <Viewbox MinWidth="600" Margin="0,75,0,0"
+                 VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Grid>
+                <c:Display />
+                <c:Scanner />
+            </Grid>
+        </Viewbox>
     </Grid>
 </UserControl>

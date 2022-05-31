@@ -22,6 +22,10 @@ namespace FirstMate.Pages
                 Tabs.TabItems.Add(tab);
             }
 
+            //TODO: makee tabview tabstrip shorter. 
+            //Tabs.Scale = new((float).5); <<This scales tabview AND content.
+
+
             Tabs.TabItemsChanged += Tabs_TabItemsChanged;
 
             Loaded += TabViewPage_Loaded;

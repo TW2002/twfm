@@ -22,6 +22,7 @@ namespace Controls
         private ContentControl designerItem;
         private Canvas canvas;
 
+        private Grid itemDecoratorElement;
         private Thumb moveThumbElement;
         private Grid resizeThumbElement;
 
@@ -30,12 +31,45 @@ namespace Controls
 
             this.DefaultStyleKey = typeof(TransformAdorner);
 
-
+            LostFocus += Aoorner_LostFocus;
         }
+
+        private void Aoorner_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (itemDecoratorElement == null) return;
+
+            itemDecoratorElement.Visibility = Visibility.Collapsed;
+        }
+
 
 
         protected override void OnApplyTemplate()
         {
+            itemDecoratorElement = GetTemplateChild("ItemDecorator") as Grid;
+            if (itemDecoratorElement == null) return;
+
+
+            switch (Content.ToString())
+            {
+                case "Microsoft.UI.Xaml.Controls.RichTextBlock":
+                    var terminalDisplay = this.Content as RichTextBlock;
+
+                    terminalDisplay.ContextFlyout.Opening += Menu_Opening;
+                    terminalDisplay.SelectionFlyout.Opening += Menu_Opening;
+                    break;
+
+                case "Microsoft.UI.Xaml.Controls.Grid":
+                    var grid = this.Content as Grid;
+
+                    grid.ContextFlyout = new TextCommandBarFlyout()
+                    {
+                        Placement = FlyoutPlacementMode.RightEdgeAlignedTop
+                    };
+
+                    grid.ContextFlyout.Opening += Menu_Opening;
+                    break;
+            }
+
             moveThumbElement = GetTemplateChild("MoveThumb") as Thumb;
             //moveThumbElement.DragStarted += MoveThumbDragStarted;
             moveThumbElement.DragDelta += MoveThumbDragDelta;
@@ -51,6 +85,34 @@ namespace Controls
                 thumb.DragDelta += ResizeThumb_DragDelta;
             }
         }
+
+        private void Menu_Opening(object sender, object e)
+        {
+            AppBarButton item = new()
+            {
+                //Command = new StandardUICommand(StandardUICommandKind.Share)
+                Icon = new SymbolIcon(Symbol.FullScreen),
+                Label = "Move / Resize"
+            };
+            item.Click += MoveResize_Clicked;
+
+            //terminalDisplay.ContextFlyout.Items.Add(myButton);
+            var flyout = sender as TextCommandBarFlyout;
+            flyout.SecondaryCommands.Add(item);
+        }
+
+        /// <summary>
+        /// Handle click event from Move / Resize context menu.
+        /// </summary>
+        private void MoveResize_Clicked(object sender, RoutedEventArgs e)
+        {
+            if (itemDecoratorElement == null) return;
+
+            // Make the Item Decorator visable, and ensure it has focus.
+            itemDecoratorElement.Visibility = Visibility.Visible;
+            Focus(FocusState.Pointer);
+        }
+
 
         private void ResizeThumb_DragDelta(object sender, DragDeltaEventArgs e)
         {

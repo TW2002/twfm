@@ -11,11 +11,15 @@
         <Image Name="FirstMateLens" Stretch="Uniform" IsHitTestVisible="False"
                Height="460" Width="510" Margin="10,-130,0,0"
                HorizontalAlignment="Left" VerticalAlignment="Top" 
-               Source="ms-appx:///Images/lens.png" />
+               Source="ms-appx:///Images/lens.png" >
+            <Image.Clip>
+                <RectangleGeometry Rect="0 130 510 150"/>
+            </Image.Clip>
+        </Image>
         <Image Name="FirstMateLogo" Stretch="Uniform"
                Height="75" Width="350" Margin="10,10,0,0" 
                HorizontalAlignment="Left" VerticalAlignment="Top" 
                Source="ms-appx:///Images/logo.png" />
-        <TextBlock Margin="50,100,0,0" FontSize="24">FirstMate - Ready for combat!</TextBlock>
+        <TextBlock Margin="140,75,0,0" FontSize="18" Foreground="Red">Ready for combat!</TextBlock>
     </Grid>
 </UserControl>

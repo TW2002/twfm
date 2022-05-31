@@ -5,6 +5,10 @@
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Dark">
             <SolidColorBrush x:Key="SettingsBackgroundBrush" Color="DarkBlue"/>
+            <SolidColorBrush x:Key="TabViewItemHeaderBackground" Color="DarkBlue"/>
+            <SolidColorBrush x:Key="TabViewItemHeaderBackgroundSelected" Color="Blue"/>
+            <SolidColorBrush x:Key="TabViewItemHeaderBackgroundPointerOver" Color="Red"/>
+
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 

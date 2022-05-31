@@ -1,6 +1,8 @@
 ﻿using FirstMate.Pages;
+using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
 using System.Collections.Generic;
 
 namespace FirstMate
@@ -29,6 +31,7 @@ namespace FirstMate
                     {
                         DataContext = $"NewTab"
                     }
+
                 };
             }
 

@@ -7,9 +7,20 @@
     <ControlTemplate x:Key="DisplayTemplate" TargetType="local:Display">
 
         <local:TransformAdorner
-                Height="400" Width="600" Padding="10"
+                Height="400" Width="600" Margin="10,10,0,0" Padding="10"
                 VerticalAlignment="Top" HorizontalAlignment="Left">
-            <RichTextBlock x:Name="TerminalDisplay" >
+            <RichTextBlock x:Name="TerminalDisplay" 
+                           >
+<!--"                <RichTextBlock.ContextFlyout>
+                    <Flyout>
+                        <AppBarButton>
+                            <AppBarButton.Command>
+                                <StandardUICommand Kind="SelectAll" Command="{x:Bind SelectAllCommand}" />
+                            </AppBarButton.Command>
+                        </AppBarButton>
+                    </Flyout>
+                </RichTextBlock.ContextFlyout>
+                -->
                 <Paragraph Foreground="red">This is a test
                     <Hyperlink NavigateUri="https://docs.microsoft.com/windows/apps/design/style/acrylic#usability-and-adaptability">Acrylic brush adaptability documentation</Hyperlink>
                 </Paragraph>

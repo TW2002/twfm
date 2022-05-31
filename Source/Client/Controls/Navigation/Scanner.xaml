@@ -6,33 +6,34 @@
     <!-- Default Display template -->
     <ControlTemplate x:Key="ScannerTemplate" TargetType="local:Scanner">
         <local:TransformAdorner
-                Height="250" Width="250" Padding="10"
+                Height="250" Width="250" Margin="620,10,0,0" Padding="10"
                 VerticalAlignment="Top" HorizontalAlignment="Left">
-
-            <Viewbox Stretch="Uniform" HorizontalAlignment="Stretch">
-                <Grid>
-                    <TextBox Name="textBox1" Foreground="White" Background="Black" Visibility="Collapsed" />
-                    <Image Name="BackgroundImage" Stretch="Fill"  
+            <Grid x:Name="RootGrid">
+                <Viewbox Stretch="Uniform" HorizontalAlignment="Stretch">
+                    <Grid>
+                        <TextBox Name="textBox1" Foreground="White" Background="Black" Visibility="Collapsed" />
+                        <Image Name="BackgroundImage" Stretch="Fill"  
                            Source="ms-appx:///Controls/Images/ScannerBG.png" 
                            Margin="-60" Width="420" Height="420" Opacity=".5" Visibility="Visible" />
-                    <Button Name="ButtonQ" Visibility="Collapsed" Template="{StaticResource Hexagon1}" Margin="21,57,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <Button Name="ButtonW" Template="{StaticResource Hexagon1}" Margin="100,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
-                    <Button Name="ButtonE" Template="{StaticResource Hexagon1}" Margin="179,57,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
-                    <Button Name="ButtonA" Template="{StaticResource Hexagon1}" Margin="21,151,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
-                    <Button Name="ButtonS" Template="{StaticResource Hexagon1}" Margin="100,198,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
-                    <Button Name="ButtonD" Template="{StaticResource Hexagon1}" Margin="179,151,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
-                    <Button Name="ButtonX" Template="{StaticResource Hexagon1}" Margin="100,104,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
-                    <Image Name="RefreshImage" Stretch="Uniform" Visibility="Collapsed"
+                        <Button Name="ButtonQ" Visibility="Collapsed" Template="{StaticResource Hexagon1}" Margin="21,57,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                        <Button Name="ButtonW" Template="{StaticResource Hexagon1}" Margin="100,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                        <Button Name="ButtonE" Template="{StaticResource Hexagon1}" Margin="179,57,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                        <Button Name="ButtonA" Template="{StaticResource Hexagon1}" Margin="21,151,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                        <Button Name="ButtonS" Template="{StaticResource Hexagon1}" Margin="100,198,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                        <Button Name="ButtonD" Template="{StaticResource Hexagon1}" Margin="179,151,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                        <Button Name="ButtonX" Template="{StaticResource Hexagon1}" Margin="100,104,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                        <Image Name="RefreshImage" Stretch="Uniform" Visibility="Collapsed"
                            Source="ms-appx:///Controls/Images/refresh.png" Opacity="0.5" 
                            VerticalAlignment="Bottom" HorizontalAlignment="Right" 
                            Margin="0,0,50,12" Width="36" Height="36" />
 
-                    <SymbolIcon Symbol="Refresh" Foreground="#FFC0C0C0" Margin="0,0,50,12"
+                        <SymbolIcon Symbol="Refresh" Foreground="#FFC0C0C0" Margin="0,0,50,12"
                             VerticalAlignment="Bottom" HorizontalAlignment="Right" />
 
-                    <TextBlock Height="23" HorizontalAlignment="Left" Margin="21,13,0,0" x:Name="SectorLabel" VerticalAlignment="Top" Foreground="Cyan" />
-                </Grid>
-            </Viewbox>
+                        <TextBlock Height="23" HorizontalAlignment="Left" Margin="21,13,0,0" x:Name="SectorLabel" VerticalAlignment="Top" Foreground="Cyan" />
+                    </Grid>
+                </Viewbox>
+            </Grid>
 
         </local:TransformAdorner>
     </ControlTemplate>

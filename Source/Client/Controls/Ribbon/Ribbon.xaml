@@ -9,13 +9,17 @@
 
     <ControlTemplate x:Key="Ribbon" TargetType="local:Ribbon">
         <Grid x:Name="RootGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
             <Border Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}">
             </Border>
 
             <!-- MenuItemsSource="{TemplateBinding Items}" -->
-            <NavigationView IsBackButtonVisible="Collapsed" PaneDisplayMode="Top" 
+            <NavigationView x:Name="TabView" IsBackButtonVisible="Collapsed" PaneDisplayMode="Top" 
                             MenuItemsSource="{Binding tabItems, Mode=OneWay}">
                             
                 <NavigationView.AutoSuggestBox>
@@ -24,11 +28,17 @@
                 </NavigationView.AutoSuggestBox>
             </NavigationView>
 
+            <Grid Grid.Row="1">
+                <StackPanel x:Name="GroupView" Orientation="Horizontal">
+
+                    <!--<ContentPresenter Content="{TemplateBinding ContentControl.Content}"
+                                      Margin="{TemplateBinding Padding}"/>
+                    <ItemsPresenter />-->
+                </StackPanel>
+            </Grid>
 
 
-            <!--            <ContentPresenter Content="{TemplateBinding ContentControl.Content}"
-                              Margin="{TemplateBinding Padding}"/>
-                    <ItemsPresenter /> -->
+
         </Grid>
     </ControlTemplate>
 

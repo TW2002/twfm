@@ -10,7 +10,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="75"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -18,10 +18,8 @@
                   ButtonClick="Ribbon_ButtonClick" 
                   SettingsSelected="Ribbon_SettingsSelected">
             <c:RibbonTab Header="Home"    AccessKey="H" Icon="Home">
-                <c:RibbonGroup Header="Database">
-
-                </c:RibbonGroup>
                 <c:RibbonGroup Header="Connection">
+                    
 
                 </c:RibbonGroup>
                 <c:RibbonGroup Header="Clipboard">

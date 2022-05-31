@@ -12,7 +12,10 @@
                 <ResourceDictionary Source="Themes/Dark.xaml"/>
                 <!-- Other merged dictionaries here -->
             </ResourceDictionary.MergedDictionaries>
-            
+            <StaticResource x:Key="WindowCaptionBackground" ResourceKey="ApplicationPageBackgroundThemeBrush" />
+            <StaticResource x:Key="WindowCaptionBackgroundDisabled" ResourceKey="ApplicationPageBackgroundThemeBrush" />
+            <StaticResource x:Key="WindowCaptionForeground" ResourceKey="SystemControlForegroundBaseHighBrush" />
+            <StaticResource x:Key="WindowCaptionForegroundDisabled" ResourceKey="SystemControlDisabledBaseMediumLowBrush" />
             <!-- Other app resources here -->
         </ResourceDictionary>
     </Application.Resources>

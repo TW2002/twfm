@@ -22,13 +22,22 @@ namespace FirstMate.UserControls
     {
         public PlayGameControl()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+
+            InitializeRibbon();
         }
 
         private void Control_SizeChanged(object sender, SizeChangedEventArgs e)
         {
 
         }
+
+        private void InitializeRibbon()
+        {
+            //F715	VoiceCall
+
+        }
+
 
         public void ResetRibbon()
         {

@@ -25,6 +25,13 @@ namespace Controls
 
         protected override void OnApplyTemplate()
         {
+            var rootGrid = GetTemplateChild("RootGrid") as RichTextBlock;
+            if (rootGrid == null) return;
+
+            //TextCommandBarFlyout flyout = new();
+            //rootGrid.ContextFlyout = new TextCommandBarFlyout();
+
+
             var terminalDisplay = GetTemplateChild("TerminalDisplay") as RichTextBlock;
 
             Run run = new Run();

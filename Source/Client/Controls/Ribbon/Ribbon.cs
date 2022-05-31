@@ -44,16 +44,16 @@ namespace Controls
         /// </summary>
         public void ResetSelectedTab()
         {
-            if (navigationView == null) return;
+            if (tabView == null) return;
 
             // Get the currently selected Tab Item.
-            var item = navigationView.SelectedItem as NavigationViewItem;
+            var item = tabView.SelectedItem as NavigationViewItem;
 
             // Item will be null if Settings is selected.
             if(item.Content == null)
             {
                 // Restore the previously selected tab from SelcetionChanged event.
-                navigationView.SelectedItem = lastSelecteItem;
+                tabView.SelectedItem = lastSelecteItem;
             }
         }
 
@@ -62,18 +62,18 @@ namespace Controls
         {
             base.OnApplyTemplate();
 
-            rootGrid = GetTemplateChild("RootGrid") as Grid;
-            foreach(var child in rootGrid.Children)
-            {
-                if (child is NavigationView)
-                {
-                    navigationView = child as NavigationView;
-                }
-                if (child is ItemsControl)
-                {
-                    itemsControl = child as ItemsControl;
-                }
-            }
+            //rootGrid = GetTemplateChild("RootGrid") as Grid;
+            //foreach(var child in rootGrid.Children)
+            //{
+            //    if (child is NavigationView)
+            //    {
+            //        navigationView = child as NavigationView;
+            //    }
+            //    if (child is ItemsControl)
+            //    {
+            //        itemsControl = child as ItemsControl;
+            //    }
+            //}
 
             //tabView = GetTemplateChild("TabView") as NavigationViewItem;
 
@@ -81,7 +81,9 @@ namespace Controls
             //Button button = new() { Content = "Hello Universe..." };
             //rootGrid.Children.Add(button);
 
-            if (navigationView == null) return;
+
+            tabView = GetTemplateChild("TabView") as NavigationView;
+            if (tabView == null) return;
 
             tabItems.Clear();
             foreach (RibbonTab tab in Items)
@@ -95,9 +97,14 @@ namespace Controls
 
                 });
 
+                groupView = GetTemplateChild("GroupView") as StackPanel;
+                if (groupView == null) return;
+
                 foreach (RibbonGroup group in tab.Items)
                 {
-
+                    Button btn = new Button();
+                    btn.Content = group.Header;
+                    groupView.Children.Add(btn);
                 }
 
                 //UIElement uiElement =
@@ -105,11 +112,11 @@ namespace Controls
                 //ribbonGroup = ItemContainerGenerator.ContainerFromItem(item) as RibbonGroup;
             }
 
-            navigationView.MenuItemsSource = tabItems;
-            navigationView.SelectedItem = tabItems.FirstOrDefault();
+            tabView.MenuItemsSource = tabItems;
+            tabView.SelectedItem = tabItems.FirstOrDefault();
             lastSelecteItem = tabItems.FirstOrDefault();
 
-            navigationView.SelectionChanged += NavigationView_SelectionChanged;
+            tabView.SelectionChanged += NavigationView_SelectionChanged;
 
         }
 
@@ -154,10 +161,11 @@ namespace Controls
 
         private Grid rootGrid;
 
-        private NavigationView navigationView;
+        private NavigationView tabView;
         private List<NavigationViewItem> tabItems;
 
-        private RibbonGroup ribbonGroup;
+        //private RibbonGroup ribbonGroup;
+        private StackPanel groupView;
 
         private ItemsControl itemsControl;
     }
