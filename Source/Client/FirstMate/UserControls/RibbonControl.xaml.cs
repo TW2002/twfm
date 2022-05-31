@@ -38,5 +38,12 @@ namespace FirstMate.UserControls
             TabViewPage page = window.Content as TabViewPage;
             page.ShowSettingsTab();
         }
+
+        private void Game_Selected(object sender, SelectionChangedEventArgs e)
+        {
+            var listItem = e.AddedItems[0] as ListBoxItem;
+            GameButton.Content = listItem.Content.ToString();
+            GameButton.Flyout.Hide();
+        }
     }
 }

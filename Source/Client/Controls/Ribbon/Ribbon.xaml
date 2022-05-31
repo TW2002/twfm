@@ -3,9 +3,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Controls">
 
-  <!--  <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="ms-appx:///Controls/Ribbon/RibbonTab.xaml" />
-    </ResourceDictionary.MergedDictionaries>-->
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="ms-appx:///Controls/Ribbon/RibbonGroup.xaml" />
+    </ResourceDictionary.MergedDictionaries>
 
     <ControlTemplate x:Key="Ribbon" TargetType="local:Ribbon">
         <Grid x:Name="RootGrid">

@@ -98,9 +98,9 @@ namespace Controls
 
                 foreach (RibbonGroup group in tab.Items)
                 {
-                    Button btn = new Button();
-                    btn.Content = group.Header;
-                    stackPanel.Children.Add(btn);
+                    //Button btn = new Button();
+                    //btn.Content = group.Header;
+                    stackPanel.Children.Add(group);
                 }
 
                 groupViews.Children.Add(stackPanel);

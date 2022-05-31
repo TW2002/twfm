@@ -5,10 +5,25 @@
 
 
     <ControlTemplate x:Key="RibbonGroup" TargetType="local:RibbonGroup">
-        <Grid x:Name="rootGrid">
+        <Grid x:Name="RootGrid">
             <Border Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}">
+                <StackPanel>
+                    <ScrollViewer HorizontalScrollBarVisibility="Hidden"
+                              HorizontalScrollMode="Disabled"
+                              VerticalScrollBarVisibility="Hidden"
+                              VerticalScrollMode="Disabled">
+                        <ItemsRepeater x:Name="GroupItemsRepeater"
+                        AutomationProperties.AccessibilityView="Content"
+                        AutomationProperties.LandmarkType="Navigation">
+                            <ItemsRepeater.Layout>
+                                <StackLayout Orientation="Horizontal" />
+                            </ItemsRepeater.Layout>
+                        </ItemsRepeater>
+                    </ScrollViewer>
+                    <TextBlock x:Name="GroupHeader"/>
+                </StackPanel>
             </Border>
 
 

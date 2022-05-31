@@ -19,6 +19,19 @@
                   SettingsSelected="Ribbon_SettingsSelected">
             <c:RibbonTab Header="Home"    AccessKey="H" Icon="Home">
                 <c:RibbonGroup Header="Connection">
+                    <AppBarButton Icon="Placeholder" Label="Connect" />
+                    <SplitButton Name="GameButton" 
+                                 Background="Black" Foreground="White"
+                                 Content="Select a Game">
+                        <SplitButton.Flyout>
+                            <Flyout>
+                                <ListBox SelectionChanged="Game_Selected">
+                                    <ListBoxItem Content="MBN - Game Z" />
+                                    <ListBoxItem Content="Ice 9 - Game A" />
+                                </ListBox>
+                            </Flyout>
+                        </SplitButton.Flyout>
+                    </SplitButton>
 
 
                 </c:RibbonGroup>
