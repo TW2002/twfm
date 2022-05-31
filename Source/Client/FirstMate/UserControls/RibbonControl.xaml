@@ -19,17 +19,24 @@
                   SettingsSelected="Ribbon_SettingsSelected">
             <c:RibbonTab Header="Home"    AccessKey="H" Icon="Home">
                 <c:RibbonGroup Header="Connection">
-                    
+
 
                 </c:RibbonGroup>
                 <c:RibbonGroup Header="Clipboard">
 
                 </c:RibbonGroup>
             </c:RibbonTab>
-            <c:RibbonTab Header="Cashing" AccessKey="S"/>
+            <c:RibbonTab Header="Cashing" AccessKey="S">
+                <c:RibbonGroup Header="Hagggle">
+
+                </c:RibbonGroup>
+                <c:RibbonGroup Header="Port Pairs">
+
+                </c:RibbonGroup>
+            </c:RibbonTab>
             <c:RibbonTab Header="Combat"  AccessKey="C"/>
             <c:RibbonTab Header="Utility" AccessKey="U"/>
-        </c:Ribbon> 
+        </c:Ribbon>
 
         <Grid Grid.Row="1" Background="#FF202020">
 

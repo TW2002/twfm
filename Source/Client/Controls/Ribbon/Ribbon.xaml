@@ -28,13 +28,8 @@
                 </NavigationView.AutoSuggestBox>
             </NavigationView>
 
-            <Grid Grid.Row="1">
-                <StackPanel x:Name="GroupView" Orientation="Horizontal">
+            <Grid x:Name="GroupViews" Grid.Row="1">
 
-                    <!--<ContentPresenter Content="{TemplateBinding ContentControl.Content}"
-                                      Margin="{TemplateBinding Padding}"/>
-                    <ItemsPresenter />-->
-                </StackPanel>
             </Grid>
 
 

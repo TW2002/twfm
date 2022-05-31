@@ -27,11 +27,6 @@ namespace FirstMate.UserControls
             this.InitializeComponent();
         }
 
-        public void Reset()
-        {
-           MainRibbon.ResetSelectedTab();
-        }
-
         private void Ribbon_ButtonClick(Ribbon sender, ButtonClickEventArgs args)
         {
             //string s = args.SelectedItem.ToString();

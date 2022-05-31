@@ -38,26 +38,6 @@ namespace Controls
             this.DefaultStyleKey = typeof(Ribbon);
         }
 
-
-        /// <summary>
-        /// Reset the selected item back to the previously selected item.
-        /// </summary>
-        public void ResetSelectedTab()
-        {
-            if (tabView == null) return;
-
-            // Get the currently selected Tab Item.
-            var item = tabView.SelectedItem as NavigationViewItem;
-
-            // Item will be null if Settings is selected.
-            if(item.Content == null)
-            {
-                // Restore the previously selected tab from SelcetionChanged event.
-                tabView.SelectedItem = lastSelecteItem;
-            }
-        }
-
-
         protected override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -85,10 +65,14 @@ namespace Controls
             tabView = GetTemplateChild("TabView") as NavigationView;
             if (tabView == null) return;
 
+            groupViews = GetTemplateChild("GroupViews") as Grid;
+            if (groupViews == null) return;
+
+
             tabItems.Clear();
             foreach (RibbonTab tab in Items)
             {
-                tabItems.Add(new NavigationViewItem()
+                tabView.MenuItems.Add(new NavigationViewItem()
                 {
                     Content = tab.Header,
                     AccessKey = tab.AccessKey,
@@ -97,66 +81,122 @@ namespace Controls
 
                 });
 
-                groupView = GetTemplateChild("GroupView") as StackPanel;
-                if (groupView == null) return;
+                //tabItems.Add(new NavigationViewItem()
+                //{
+                //    Content = tab.Header,
+                //    AccessKey = tab.AccessKey,
+                //    KeyTipTarget = tab.KeyTipTarget,
+                //    Icon = tab.Icon
+
+                //});
+
+                StackPanel stackPanel = new()
+                {
+                    Orientation = Orientation.Horizontal,
+                    Visibility = Visibility.Collapsed
+                };
 
                 foreach (RibbonGroup group in tab.Items)
                 {
                     Button btn = new Button();
                     btn.Content = group.Header;
-                    groupView.Children.Add(btn);
+                    stackPanel.Children.Add(btn);
                 }
+
+                groupViews.Children.Add(stackPanel);
 
                 //UIElement uiElement =
                 //        (UIElement)ItemContainerGenerator.ContainerFromItem(item);
                 //ribbonGroup = ItemContainerGenerator.ContainerFromItem(item) as RibbonGroup;
             }
 
-            tabView.MenuItemsSource = tabItems;
-            tabView.SelectedItem = tabItems.FirstOrDefault();
-            lastSelecteItem = tabItems.FirstOrDefault();
+            groupViews.Children[0].Visibility = Visibility.Visible;
 
-            tabView.SelectionChanged += NavigationView_SelectionChanged;
+            tabView.SelectedItem = tabView.MenuItems[0];
+            lastSelecteItem = tabView.SelectedItem as NavigationViewItem;
+            //tabView.MenuItemsSource = tabItems;
+            //tabView.SelectedItem = tabItems.FirstOrDefault();
+            //lastSelecteItem = tabItems.FirstOrDefault();
+
+            tabView.SelectionChanged += TabView_SelectionChangedAsync;
 
         }
 
 
 
-        private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs e)
+        private void TabView_SelectionChangedAsync(NavigationView sender, NavigationViewSelectionChangedEventArgs e)
         {
+            int selectedIndex = 0;
+
+            for (int i = 0; i < tabView.MenuItems.Count; i++)
+            {
+                var navItem = tabView.MenuItems[i] as NavigationViewItem;
+
+                if (navItem == lastSelecteItem)
+                { 
+                    selectedIndex = i;
+                    break;
+                }
+            }
+
             if (e.IsSettingsSelected)
             {
                 if (SettingsSelected != null)
                 {
                     SettingsSelected.Invoke(this, new RoutedEventArgs());
 
-                    //TODO - Select previously selected item.
-                    //sender.SelectedItem = tabItems.FirstOrDefault();
+                    // Select previously selected item using dispatcher.
+                    tabView.DispatcherQueue.TryEnqueue(() =>
+                    {
+                        tabView.SelectedItem = tabView.MenuItems[selectedIndex];
+                    });
                 }
             }
             else
             {
-                ButtonClickEventArgs args = new();
-                args.SelectedItem = e.SelectedItem;
+                lastSelecteItem = e.SelectedItem as NavigationViewItem;
 
                 if (ButtonClick != null)
                 {
-                    ButtonClick.Invoke(this, args);
+                    ButtonClick.Invoke(this, new ButtonClickEventArgs()
+                    {
+                        SelectedItem = lastSelecteItem
+                    });
                 }
+
+                for (int i = 0; i < tabView.MenuItems.Count; i++)
+                {
+                    var navItem = tabView.MenuItems[i] as NavigationViewItem;
+
+                    groupViews.Children[i].Visibility =
+                        (navItem == lastSelecteItem) ? Visibility.Visible : Visibility.Collapsed;
+
+
+                    //if (navItem == lastSelecteItem)
+                    //{
+                    //    groupViews.Children[i].Visibility = Visibility.Visible;
+                    //}
+                    //else
+                    //{
+                    //    groupViews.Children[i].Visibility = Visibility.Collapsed;
+                    //}
+                }
+
+
             }
 
-            // Get the currently selected item.
-            var item = sender.SelectedItem as NavigationViewItem;
+            //// Get the currently selected item.
+            //var item = sender.SelectedItem as NavigationViewItem;
 
-            // Get the tab item for the selected tab.
-            var sourceitem = tabItems.Where(n => n == item).FirstOrDefault();
+            //// Get the tab item for the selected tab.
+            //var sourceitem = tabItems.Where(n => n == item).FirstOrDefault();
 
-            // Item will not be found if settigns button was seleted.
-            if (sourceitem != null)
-            {
-                // Save the item to be restore by ResetSelectedTab
-                lastSelecteItem = sourceitem;
-            }
+            //// Item will not be found if settigns button was seleted.
+            //if (sourceitem != null)
+            //{
+            //    // Save the item to be restore by ResetSelectedTab
+            //    lastSelecteItem = sourceitem;
+            //}
         }
 
         private Grid rootGrid;
@@ -165,7 +205,7 @@ namespace Controls
         private List<NavigationViewItem> tabItems;
 
         //private RibbonGroup ribbonGroup;
-        private StackPanel groupView;
+        private Grid groupViews;
 
         private ItemsControl itemsControl;
     }

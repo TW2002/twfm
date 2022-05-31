@@ -255,7 +255,6 @@ namespace FirstMate.Pages
             if (tabViewItem.Content.GetType() == typeof(UserControls.PlayGameControl))
             {
                 var gameControl = tabViewItem.Content as UserControls.PlayGameControl;
-                gameControl.ResetRibbon();
             }
         }
     }

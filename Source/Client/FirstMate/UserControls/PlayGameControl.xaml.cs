@@ -24,7 +24,6 @@ namespace FirstMate.UserControls
         {
             InitializeComponent();
 
-            InitializeRibbon();
         }
 
         private void Control_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -32,16 +31,5 @@ namespace FirstMate.UserControls
 
         }
 
-        private void InitializeRibbon()
-        {
-            //F715	VoiceCall
-
-        }
-
-
-        public void ResetRibbon()
-        {
-            MainRibbonControl.Reset();
-        }
     }
 }
