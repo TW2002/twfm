@@ -75,20 +75,7 @@ public sealed class RibbonTab : ItemsControl
 
     protected override void OnApplyTemplate()
     {
-        //base.OnApplyTemplate();
 
-        ribbonTab = GetTemplateChild("RibbonTab") as AppBarButton;
-        if (ribbonTab == null) return;
-
-        //StackPanel tabPanel = new();
-
-        //tabPanel.Children.Add(new SymbolIcon()
-        //{
-        //    Symbol = new SymbolIcon(Icon)
-        //});
-
-        //ribbonTab.Content = Header;
-        //ribbonTab.Icon = Icon;
     }
 }
 
@@ -108,20 +95,12 @@ public sealed class RibbonGroup : ItemsControl
 
     protected override void OnApplyTemplate()
     {
-        base.OnApplyTemplate();
+        // Get the items repeater for the command items, and verify it is not null.
+        var commandItems = GetTemplateChild("CommandItemsRepeater") as ItemsRepeater;
+        if (commandItems == null) return;
 
-        var rootGrid = GetTemplateChild("RootGrid") as Grid;
-        if (rootGrid == null) return;
-
-        //StackPanel tabPanel = new();
-
-        //tabPanel.Children.Add(new SymbolIcon()
-        //{
-        //    Symbol = new SymbolIcon(Icon)
-        //});
-
-        //ribbonTab.Content = Header;
-        //ribbonTab.Icon = Icon;
+        // Bind the command items list to the repeater itemsource.
+        commandItems.ItemsSource = Items;
     }
 }
 

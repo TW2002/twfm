@@ -34,18 +34,19 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Button Name="AcceptButton" Height="30" Width="85"
-                    FontSize="12" FontWeight="Bold"
-                          Background="Blue">
+            <ToggleButton Height="26" Width="75"
+                    FontSize="10" FontWeight="Bold"
+                          Background="Blue"
+                          >
                 <StackPanel Orientation="Horizontal"
                             Spacing="5">
-                    <Viewbox Width="16" Height="16"
+                    <Viewbox Width="12" Height="12"
                              Visibility="{Binding IconVisibility, RelativeSource={RelativeSource TemplatedParent}}">
                         <SymbolIcon Symbol="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}}"/>
                     </Viewbox>
                     <TextBlock Text="{Binding Header, RelativeSource={RelativeSource TemplatedParent}}"/>
                 </StackPanel>
-            </Button>
+            </ToggleButton>
 
 
 
@@ -56,14 +57,21 @@
     <ControlTemplate x:Key="DefaultRibbonGroupTemplate" TargetType="local:RibbonGroup">
 
         <Grid x:Name="RootGrid" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Button Name="AcceptButton" Height="30"
-                    FontSize="12" FontWeight="Bold"
-                          Background="Blue">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <ItemsRepeater x:Name="CommandItemsRepeater" Margin="0" Grid.Row="0" 
+                           Background="Red">
+                <ItemsRepeater.Layout>
+                    <StackLayout Orientation="Horizontal"/>
+                </ItemsRepeater.Layout>
+            </ItemsRepeater>
+
+            <Button Height="26" Grid.Row="1"
+                    FontSize="10" FontWeight="Bold"
+                          Background="Green">
                 <StackPanel Orientation="Horizontal"
                             Spacing="5">
                     <TextBlock Text="{Binding Header, RelativeSource={RelativeSource TemplatedParent}}"/>

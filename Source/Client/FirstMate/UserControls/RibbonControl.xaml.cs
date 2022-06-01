@@ -42,8 +42,18 @@ namespace FirstMate.UserControls
         private void Game_Selected(object sender, SelectionChangedEventArgs e)
         {
             var listItem = e.AddedItems[0] as ListBoxItem;
-            //GameButton.Content = listItem.Content.ToString();
-            //GameButton.Flyout.Hide();
+            GameButton.Content = listItem.Content.ToString();
+            GameButton.Flyout.Hide();
+        }
+
+        private void Proxy_Selected(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Bot_Selected(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
