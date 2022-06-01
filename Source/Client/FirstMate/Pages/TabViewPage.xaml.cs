@@ -5,7 +5,7 @@ using Microsoft.UI.Xaml.Navigation;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.DataTransfer;
 using System.Linq;
-
+using System;
 
 namespace FirstMate.Pages
 {
@@ -23,13 +23,16 @@ namespace FirstMate.Pages
             }
 
             //TODO: makee tabview tabstrip shorter. 
-            //Tabs.Scale = new((float).5); <<This scales tabview AND content.
+            //Tabs.Scale = new((float).5); //<<This scales tabview AND content.
 
 
             Tabs.TabItemsChanged += Tabs_TabItemsChanged;
 
+
             Loaded += TabViewPage_Loaded;
         }
+
+
 
         private void TabViewPage_Loaded(object sender, RoutedEventArgs e)
         {

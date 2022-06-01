@@ -27,23 +27,23 @@ namespace FirstMate.UserControls
             this.InitializeComponent();
         }
 
-        private void Ribbon_ButtonClick(Ribbon sender, ButtonClickEventArgs args)
-        {
-            //string s = args.SelectedItem.ToString();
-        }
+        //private void Ribbon_ButtonClick(Ribbon sender, ButtonClickEventArgs args)
+        //{
+        //    //string s = args.SelectedItem.ToString();
+        //}
 
-        private void Ribbon_SettingsSelected(object sender, RoutedEventArgs e)
-        {
-            Window window = WindowManager.GetWindowForElement(this);
-            TabViewPage page = window.Content as TabViewPage;
-            page.ShowSettingsTab();
-        }
+        //private void Ribbon_SettingsSelected(object sender, RoutedEventArgs e)
+        //{
+        //    Window window = WindowManager.GetWindowForElement(this);
+        //    TabViewPage page = window.Content as TabViewPage;
+        //    page.ShowSettingsTab();
+        //}
 
         private void Game_Selected(object sender, SelectionChangedEventArgs e)
         {
             var listItem = e.AddedItems[0] as ListBoxItem;
-            GameButton.Content = listItem.Content.ToString();
-            GameButton.Flyout.Hide();
+            //GameButton.Content = listItem.Content.ToString();
+            //GameButton.Flyout.Hide();
         }
     }
 }

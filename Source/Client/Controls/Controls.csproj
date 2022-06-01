@@ -7,17 +7,7 @@
     <UseWinUI>true</UseWinUI>
   </PropertyGroup>
   <ItemGroup>
-    <Content Remove="Images\refresh2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="Images\refresh.png" />
-    <None Remove="Images\ScannerBG.png" />
-    <None Remove="Navigation\Scanner.xaml" />
-    <None Remove="Ribbon\NavTest.xaml" />
-    <None Remove="Ribbon\Ribbon.xaml" />
-    <None Remove="Ribbon\RibbonGroup.xaml" />
-    <None Remove="Terminal\Display.xaml" />
-    <None Remove="Utility\TransformAdorner.xaml" />
+    <None Remove="Toolbars\Ribbon.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,40 +16,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Navigation\Scanner.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Terminal\Display.xaml">
+    <Page Update="Toolbars\Ribbon.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="Transform\TransformAdorner.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="Ribbon\NavTest.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Ribbon\RibbonGroup.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
 
   <ItemGroup>
     <Page Update="Themes\Generic.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="Ribbon\Ribbon.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

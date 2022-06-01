@@ -1,0 +1,93 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Controls.Toolbars">
+
+    <ControlTemplate x:Key="DefaultRibbonTemplate" TargetType="local:Ribbon">
+
+        <Grid x:Name="RootGrid" RowSpacing="0" Padding="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <ItemsRepeater x:Name="TabItemsRepeater" Margin="0" >
+                <ItemsRepeater.Layout>
+                    <StackLayout Orientation="Horizontal"  />
+                </ItemsRepeater.Layout>
+            </ItemsRepeater>
+
+            <ItemsRepeater x:Name="GroupItemsRepeater" Margin="0" Grid.Row="1" >
+                <ItemsRepeater.Layout>
+                    <StackLayout Orientation="Horizontal"  />
+                </ItemsRepeater.Layout>
+            </ItemsRepeater>
+
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="DefaultRibbonTabTemplate" TargetType="local:RibbonTab">
+
+        <Grid x:Name="RootGrid" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Name="AcceptButton" Height="30" Width="85"
+                    FontSize="12" FontWeight="Bold"
+                          Background="Blue">
+                <StackPanel Orientation="Horizontal"
+                            Spacing="5">
+                    <Viewbox Width="16" Height="16"
+                             Visibility="{Binding IconVisibility, RelativeSource={RelativeSource TemplatedParent}}">
+                        <SymbolIcon Symbol="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}}"/>
+                    </Viewbox>
+                    <TextBlock Text="{Binding Header, RelativeSource={RelativeSource TemplatedParent}}"/>
+                </StackPanel>
+            </Button>
+
+
+
+        </Grid>
+    </ControlTemplate>
+
+
+    <ControlTemplate x:Key="DefaultRibbonGroupTemplate" TargetType="local:RibbonGroup">
+
+        <Grid x:Name="RootGrid" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Name="AcceptButton" Height="30"
+                    FontSize="12" FontWeight="Bold"
+                          Background="Blue">
+                <StackPanel Orientation="Horizontal"
+                            Spacing="5">
+                    <TextBlock Text="{Binding Header, RelativeSource={RelativeSource TemplatedParent}}"/>
+                </StackPanel>
+            </Button>
+
+
+
+        </Grid>
+    </ControlTemplate>
+
+
+
+    <Style TargetType="local:Ribbon">
+        <Setter Property="Template" Value="{StaticResource DefaultRibbonTemplate}" />
+    </Style>
+
+    <Style TargetType="local:RibbonTab">
+        <Setter Property="Template" Value="{StaticResource DefaultRibbonTabTemplate}" />
+    </Style>
+
+    <Style TargetType="local:RibbonGroup">
+        <Setter Property="Template" Value="{StaticResource DefaultRibbonGroupTemplate}" />
+    </Style>
+
+
+</ResourceDictionary>

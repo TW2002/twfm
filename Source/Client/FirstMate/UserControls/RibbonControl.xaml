@@ -1,6 +1,6 @@
 ﻿<UserControl x:Class="FirstMate.UserControls.RibbonControl"
       xmlns:local="using:FirstMate.UserControls"
-      xmlns:c="using:Controls"
+      xmlns:tb="using:Controls.Toolbars"
 
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -14,12 +14,18 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <c:Ribbon Background="Green" Name="MainRibbon"
-                  ButtonClick="Ribbon_ButtonClick" 
-                  SettingsSelected="Ribbon_SettingsSelected">
-            <c:RibbonTab Header="Home"    AccessKey="H" Icon="Home">
-                <c:RibbonGroup Header="Connection">
-                    <AppBarButton Icon="Placeholder" Label="Connect" />
+        <tb:Ribbon Background="Green" Name="MainRibbon">
+            <tb:RibbonTab Header="Home"    AccessKey="H" Icon="Home">
+                <tb:RibbonGroup Header="Connection">
+
+                </tb:RibbonGroup>
+                <tb:RibbonGroup Header="Proxy/Bot">
+
+                </tb:RibbonGroup>
+                <tb:RibbonGroup Header="Clipboard">
+
+                </tb:RibbonGroup>
+                <!--                               <AppBarButton Icon="Placeholder" Label="Connect" Margin="0" Padding="0" />
                     <SplitButton Name="GameButton" 
                                  Background="Black" Foreground="White"
                                  Content="Select a Game">
@@ -37,19 +43,13 @@
                 </c:RibbonGroup>
                 <c:RibbonGroup Header="Clipboard">
 
-                </c:RibbonGroup>
-            </c:RibbonTab>
-            <c:RibbonTab Header="Cashing" AccessKey="S">
-                <c:RibbonGroup Header="Hagggle">
-
-                </c:RibbonGroup>
-                <c:RibbonGroup Header="Port Pairs">
-
-                </c:RibbonGroup>
-            </c:RibbonTab>
-            <c:RibbonTab Header="Combat"  AccessKey="C"/>
-            <c:RibbonTab Header="Utility" AccessKey="U"/>
-        </c:Ribbon>
+                </c:RibbonGroup>-->
+            </tb:RibbonTab>
+            <tb:RibbonTab Header="Cashing" AccessKey="S">
+            </tb:RibbonTab>
+            <tb:RibbonTab Header="Combat"  AccessKey="C"/>
+            <tb:RibbonTab Header="Utility" AccessKey="U"/>
+        </tb:Ribbon>
 
         <Grid Grid.Row="1" Background="#FF202020">
 

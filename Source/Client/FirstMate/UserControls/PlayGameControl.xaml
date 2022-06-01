@@ -13,8 +13,8 @@
         <Viewbox MinWidth="600" Margin="0,75,0,0"
                  VerticalAlignment="Top" HorizontalAlignment="Left">
             <Grid>
-                <c:Display />
-                <c:Scanner />
+               <!-- <c:Display />
+                <c:Scanner />-->
             </Grid>
         </Viewbox>
     </Grid>

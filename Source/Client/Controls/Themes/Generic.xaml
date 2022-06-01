@@ -4,11 +4,7 @@
     xmlns:local="using:Controls">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="ms-appx:///Controls/Ribbon/Ribbon.xaml" />
-        <ResourceDictionary Source="ms-appx:///Controls/Utility/TransformAdorner.xaml" />
-        <ResourceDictionary Source="ms-appx:///Controls/Terminal/Display.xaml" />
-        <ResourceDictionary Source="ms-appx:///Controls/Navigation/Scanner.xaml" />
+        <ResourceDictionary Source="ms-appx:///Controls/Toolbars/Ribbon.xaml" />
     </ResourceDictionary.MergedDictionaries>
-
 
 </ResourceDictionary>
