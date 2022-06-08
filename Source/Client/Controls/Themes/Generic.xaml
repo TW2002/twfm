@@ -5,6 +5,9 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="ms-appx:///Controls/Toolbars/Ribbon.xaml" />
+        <ResourceDictionary Source="ms-appx:///Controls/TradeWars/TransformAdorner.xaml" />
+        <ResourceDictionary Source="ms-appx:///Controls/TradeWars/Display.xaml" />
+        <ResourceDictionary Source="ms-appx:///Controls/TradeWars/Scanner.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

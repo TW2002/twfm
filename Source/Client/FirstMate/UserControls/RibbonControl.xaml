@@ -1,6 +1,6 @@
 ﻿<UserControl x:Class="FirstMate.UserControls.RibbonControl"
       xmlns:local="using:FirstMate.UserControls"
-      xmlns:tb="using:Controls.Toolbars"
+      xmlns:c="using:Controls"
 
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -14,9 +14,9 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <tb:Ribbon Background="Green" Name="MainRibbon">
-            <tb:RibbonTab Header="Home"    AccessKey="H" Icon="Home">
-                <tb:RibbonGroup Header="Connection">
+        <c:Ribbon Background="Green" Name="MainRibbon">
+            <c:RibbonTab Header="Home"    AccessKey="H" Icon="Home">
+                <c:RibbonGroup Header="Connection">
                     <AppBarButton Icon="Placeholder" Label="Connect" Margin="0" Padding="0" />
                     <SplitButton Name="GameButton" 
                                  Background="Black" Foreground="White"
@@ -30,8 +30,8 @@
                             </Flyout>
                         </SplitButton.Flyout>
                     </SplitButton>
-                </tb:RibbonGroup>
-                <tb:RibbonGroup Header="Proxy/Bot">
+                </c:RibbonGroup>
+                <c:RibbonGroup Header="Proxy/Bot">
                     <AppBarButton Icon="Placeholder" Label="Proxy Mode" Margin="0" Padding="0" />
                     <StackPanel>
                         <SplitButton Name="ProxyButton" 
@@ -61,35 +61,35 @@
                             </SplitButton.Flyout>
                         </SplitButton>
                     </StackPanel>
-                </tb:RibbonGroup>
-                <tb:RibbonGroup Header="Clipboard">
+                </c:RibbonGroup>
+                <c:RibbonGroup Header="Clipboard">
                     <AppBarButton Icon="Paste" Label="Proxy Mode" Margin="0" Padding="0" />
 
-                </tb:RibbonGroup>
-            </tb:RibbonTab>
-            <tb:RibbonTab Header="Cashing" AccessKey="S">
-                <tb:RibbonGroup Header="Port Trading">
+                </c:RibbonGroup>
+            </c:RibbonTab>
+            <c:RibbonTab Header="Cashing" AccessKey="S">
+                <c:RibbonGroup Header="Port Trading">
                     <AppBarButton Icon="Placeholder" Label="Galactic Trader" Margin="0" Padding="0" />
-                </tb:RibbonGroup>
-                <tb:RibbonGroup Header="Dark Side">
+                </c:RibbonGroup>
+                <c:RibbonGroup Header="Dark Side">
                     <AppBarButton Icon="Placeholder" Label="Galactic Stealer" Margin="0" Padding="0" />
-                </tb:RibbonGroup>
-            </tb:RibbonTab>
-            <tb:RibbonTab Header="Combat"  AccessKey="C">
+                </c:RibbonGroup>
+            </c:RibbonTab>
+            <c:RibbonTab Header="Combat"  AccessKey="C">
                 
-            </tb:RibbonTab>
-            <tb:RibbonTab Header="Utility" AccessKey="U">
-                <tb:RibbonGroup Header="Mapping">
+            </c:RibbonTab>
+            <c:RibbonTab Header="Utility" AccessKey="U">
+                <c:RibbonGroup Header="Mapping">
                     <AppBarButton Icon="Placeholder" Label="ZTM" Margin="0" Padding="0" />
                     <AppBarButton Icon="Placeholder" Label="Scout" Margin="0" Padding="0" />
                     <AppBarButton Icon="Placeholder" Label="Probe" Margin="0" Padding="0" />
-                </tb:RibbonGroup>
-                <tb:RibbonGroup Header="Scanner">
+                </c:RibbonGroup>
+                <c:RibbonGroup Header="Scanner">
                     <AppBarButton Icon="Placeholder" Label="Density" Margin="0" Padding="0" />
                     <AppBarButton Icon="Placeholder" Label="Holo" Margin="0" Padding="0" />
-                </tb:RibbonGroup>
-            </tb:RibbonTab>
-        </tb:Ribbon>
+                </c:RibbonGroup>
+            </c:RibbonTab>
+        </c:Ribbon>
 
         <Grid Grid.Row="1" Background="#FF202020">
 

@@ -1,21 +1,17 @@
-﻿<UserControl
-    x:Class="FirstMate.UserControls.PlayGameControl"
-    xmlns:c="using:Controls"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="FirstMate.UserControls.PlayGameControl"
     xmlns:local="using:FirstMate.UserControls"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    xmlns:c="using:Controls">
 
-    <Grid Background="Magenta" >
-        <local:RibbonControl x:Name="MainRibbonControl"/>
-        <Viewbox MinWidth="600" Margin="0,75,0,0"
+    <StackPanel>
+        <local:RibbonControl/>
+        <Viewbox MinWidth="600" Margin="0,0,0,0"
                  VerticalAlignment="Top" HorizontalAlignment="Left">
             <Grid>
-               <!-- <c:Display />
-                <c:Scanner />-->
+                <c:Display />
+                <c:Scanner />
             </Grid>
         </Viewbox>
-    </Grid>
+    </StackPanel>
 </UserControl>

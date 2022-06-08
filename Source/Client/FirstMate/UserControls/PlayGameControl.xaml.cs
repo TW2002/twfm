@@ -26,10 +26,7 @@ namespace FirstMate.UserControls
 
         }
 
-        private void Control_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
 
-        }
 
     }
 }

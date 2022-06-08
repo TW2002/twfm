@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Controls.Toolbars">
+    xmlns:local="using:Controls">
 
     <ControlTemplate x:Key="DefaultRibbonTemplate" TargetType="local:Ribbon">
 
@@ -70,6 +70,7 @@
             </ItemsRepeater>
 
             <Button Height="26" Grid.Row="1"
+                    HorizontalAlignment="Stretch"
                     FontSize="10" FontWeight="Bold"
                           Background="Green">
                 <StackPanel Orientation="Horizontal"

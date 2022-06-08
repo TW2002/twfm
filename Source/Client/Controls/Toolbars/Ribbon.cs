@@ -1,16 +1,9 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Documents;
-using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Markup;
-using Microsoft.UI.Xaml.Media;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 
-namespace Controls.Toolbars;
+namespace Controls;
 
 [ContentProperty(Name = nameof(Items))]
 public sealed class Ribbon : ItemsControl
@@ -26,11 +19,6 @@ public sealed class Ribbon : ItemsControl
 
     protected override void OnApplyTemplate()
     {
-        //base.OnApplyTemplate();
-
-        //rootGrid = GetTemplateChild("RootGrid") as Grid;
-        //if (rootGrid == null) return;
-
         // Get the items repeater for the tab items, and verify it is not null.
         tabItems = GetTemplateChild("TabItemsRepeater") as ItemsRepeater;
         if (tabItems == null) return;
