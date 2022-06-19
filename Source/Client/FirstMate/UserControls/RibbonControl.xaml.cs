@@ -79,5 +79,10 @@ namespace FirstMate.UserControls
             GameButton.Content = listItem.Content.ToString();
             GameButton.Flyout.Hide();
         }
+
+        private void ConnectClicked(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Markup;
 using System;
 
@@ -8,8 +10,8 @@ namespace Controls;
 [ContentProperty(Name = nameof(Items))]
 public sealed class Ribbon : ItemsControl
 {
-    private Grid rootGrid;
-    private ItemsRepeater tabItems;
+    //private ItemsRepeater tabItems;
+    ItemsRepeater groupItems;
 
     public Ribbon()
     {
@@ -20,14 +22,23 @@ public sealed class Ribbon : ItemsControl
     protected override void OnApplyTemplate()
     {
         // Get the items repeater for the tab items, and verify it is not null.
-        tabItems = GetTemplateChild("TabItemsRepeater") as ItemsRepeater;
+        var tabItems = GetTemplateChild("TabItemsRepeater") as ItemsRepeater;
         if (tabItems == null) return;
 
         // Bind the tab items list to the repeater itemsource.
         tabItems.ItemsSource = Items;
 
+        foreach(RibbonTab item in Items)
+        {
+            item.TabChecked += RibbonTabChecked;
+        }
+
+        //Items.FirstOrDefault()
+        RibbonTab tab = Items[0] as RibbonTab;
+        tab.IsSelected = true;
+
         // Get the items repeater for the group items, and verify it is not null.
-        var groupItems = GetTemplateChild("GroupItemsRepeater") as ItemsRepeater;
+        groupItems = GetTemplateChild("GroupItemsRepeater") as ItemsRepeater;
         if (groupItems == null) return;
 
         // Get the group items list, and bind it to the repeater itemsource.
@@ -35,15 +46,48 @@ public sealed class Ribbon : ItemsControl
         groupItems.ItemsSource = groupItemsControl.Items;
 
     }
+
+    private void RibbonTabChecked(object sender, RoutedEventArgs e)
+    {
+        var tab = sender as RibbonTab;
+
+        // Deselect all other tabs.
+        foreach (RibbonTab item in Items)
+        {
+            if (item != tab) item.IsSelected = false;
+        }
+
+        // Verify items repeater for the group items is not null.
+        if (groupItems == null) return;
+
+        // Get the group items list, and bind it to the repeater itemsource.
+        groupItems.ItemsSource = tab.Items;
+    }
 }
 
 [ContentProperty(Name = nameof(Items))]
 public sealed class RibbonTab : ItemsControl
 {
+    public event EventHandler<RoutedEventArgs> TabChecked;
+
     //private Grid rootGrid;
-    private AppBarButton ribbonTab;
+    private ToggleButton ribbonTab;
     public string Header { get; set; }
     public string Icon { get; set; }
+    public bool IsChecked { get; set; }
+
+    public static readonly DependencyProperty IsSelectedProperty = DependencyProperty.Register(
+        nameof(IsSelected),
+        typeof(object),
+        typeof(RibbonTab),
+        new PropertyMetadata(string.Empty));
+
+    public object IsSelected
+    {
+        get => GetValue(IsSelectedProperty);
+        set => SetValue(IsSelectedProperty, value);
+    }
+
 
     public Visibility IconVisibility
     {
@@ -54,6 +98,7 @@ public sealed class RibbonTab : ItemsControl
         }
     }
 
+
     public RibbonTab()
     {
         this.DefaultStyleKey = typeof(RibbonTab);
@@ -63,7 +108,19 @@ public sealed class RibbonTab : ItemsControl
 
     protected override void OnApplyTemplate()
     {
+        ribbonTab = GetTemplateChild("RibbonTab") as ToggleButton;
+        if (ribbonTab == null) return;
 
+        ribbonTab.Checked += RibbonTabChecked;
+
+    }
+
+    private void RibbonTabChecked(object sender, RoutedEventArgs e)
+    {
+        if (TabChecked != null)
+        {
+            TabChecked.Invoke(this, new RoutedEventArgs());
+        }
     }
 }
 

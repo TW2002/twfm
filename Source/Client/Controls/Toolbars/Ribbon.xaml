@@ -27,17 +27,15 @@
     </ControlTemplate>
 
     <ControlTemplate x:Key="DefaultRibbonTabTemplate" TargetType="local:RibbonTab">
-
         <Grid x:Name="RootGrid" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <ToggleButton Height="26" Width="75"
-                    FontSize="10" FontWeight="Bold"
-                          Background="Blue"
-                          >
+            <ToggleButton Name="RibbonTab" 
+                          Height="26" Width="75" FontSize="10" FontWeight="Bold"
+                          IsChecked="{Binding IsSelected, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
                 <StackPanel Orientation="Horizontal"
                             Spacing="5">
                     <Viewbox Width="12" Height="12"
@@ -47,9 +45,6 @@
                     <TextBlock Text="{Binding Header, RelativeSource={RelativeSource TemplatedParent}}"/>
                 </StackPanel>
             </ToggleButton>
-
-
-
         </Grid>
     </ControlTemplate>
 
