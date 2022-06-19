@@ -6,7 +6,7 @@
     <!-- Adorner Control Template for Moving, Rotating and Resizing content -->
     <ControlTemplate x:Key="DefaultDisplayTemplate" TargetType="local:Display">
         <local:TransformAdorner x:Name="RootAdorner" 
-                                Height="300" Width="600" Margin="10,10,0,0"
+                                Height="540" Width="1000" Margin="10,10,0,0"
                                 VerticalAlignment="Top" HorizontalAlignment="Left">
             <RichTextBlock x:Name="TerminalDisplay" >
 

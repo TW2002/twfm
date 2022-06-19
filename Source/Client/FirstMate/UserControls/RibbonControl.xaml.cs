@@ -24,7 +24,27 @@ namespace FirstMate.UserControls
     {
         public RibbonControl()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+            InitializeTeamsTab();
+        }
+
+        private void InitializeTeamsTab()
+        {
+            RibbonTab rt = new() {
+                Header = "Team"
+            };
+
+            RibbonGroup rg = new() {
+                Header = "Corporation"
+            };
+            rg.Items.Add(new AppBarButton() {
+                Icon = new SymbolIcon(Symbol.People),
+                Label = "Join",
+                Margin = new Thickness(0)
+            });
+            
+            rt.Items.Add(rg);
+            MainRibbon.Items.Insert(3, rt);
         }
 
         //private void Ribbon_ButtonClick(Ribbon sender, ButtonClickEventArgs args)
@@ -48,12 +68,16 @@ namespace FirstMate.UserControls
 
         private void Proxy_Selected(object sender, SelectionChangedEventArgs e)
         {
-
+            var listItem = e.AddedItems[0] as ListBoxItem;
+            GameButton.Content = listItem.Content.ToString();
+            GameButton.Flyout.Hide();
         }
 
         private void Bot_Selected(object sender, SelectionChangedEventArgs e)
         {
-
+            var listItem = e.AddedItems[0] as ListBoxItem;
+            GameButton.Content = listItem.Content.ToString();
+            GameButton.Flyout.Hide();
         }
     }
 }

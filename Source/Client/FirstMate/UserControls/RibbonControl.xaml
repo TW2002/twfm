@@ -14,7 +14,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <c:Ribbon Background="Green" Name="MainRibbon">
+        <c:Ribbon Name="MainRibbon">
             <c:RibbonTab Header="Home"    AccessKey="H" Icon="Home">
                 <c:RibbonGroup Header="Connection">
                     <AppBarButton Icon="Placeholder" Label="Connect" Margin="0" Padding="0" />

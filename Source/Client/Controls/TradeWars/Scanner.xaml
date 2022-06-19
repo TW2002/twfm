@@ -5,7 +5,7 @@
     <!-- Adorner Control Template for Moving, Rotating and Resizing content -->
     <ControlTemplate x:Key="DefaultScannerTemplate" TargetType="local:Scanner">
         <local:TransformAdorner x:Name="RootAdorner" 
-                                Height="250" Width="250" Margin="620,10,0,0" Padding="10"
+                                Height="250" Width="250" Margin="1020,275,0,0" Padding="10"
                                 VerticalAlignment="Top" HorizontalAlignment="Left">
             <Grid x:Name="RootGrid">
                 <Viewbox Stretch="Uniform" HorizontalAlignment="Stretch">

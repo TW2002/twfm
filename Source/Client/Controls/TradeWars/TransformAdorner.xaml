@@ -19,29 +19,21 @@
                 
                 <!-- Hidden container for Move and Rotate thumbs -->
                 <Grid Name="ResizeThumbs" Opacity="0" Margin="-7" >
-                    <Thumb Name="TopLeftThumb"
-                           Width="10" Height="10" Background="Red"
+                    <Thumb Name="TopLeftThumb" Width="10" Height="10"
                            VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <Thumb Name="TopRightThumb"
-                           Width="10" Height="10" Background="Red"
+                    <Thumb Name="TopRightThumb" Width="10" Height="10"
                            VerticalAlignment="Top" HorizontalAlignment="Right"/>
-                    <Thumb Name="BottomLeftThumb"
-                           Width="10" Height="10" Background="Red"
+                    <Thumb Name="BottomLeftThumb" Width="10" Height="10" 
                            VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                    <Thumb Name="BottomRightThumb"
-                           Width="10" Height="10" Background="Red"
+                    <Thumb Name="BottomRightThumb" Width="10" Height="10" 
                            VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-                    <Thumb Name="LeftThumb"
-                           Width="5" Margin="3" Background="Magenta"
+                    <Thumb Name="LeftThumb" Width="5" Margin="3" 
                            VerticalAlignment="Stretch" HorizontalAlignment="Left"/>
-                    <Thumb Name="TopThumb"
-                           Height="5" Margin="3" Background="Magenta"
+                    <Thumb Name="TopThumb" Height="5" Margin="3" 
                            VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
-                    <Thumb Name="BottomThumb"
-                           Height="5" Margin="3" Background="Magenta"
+                    <Thumb Name="BottomThumb" Height="5" Margin="3" 
                            VerticalAlignment="Bottom" HorizontalAlignment="Stretch"/>
-                    <Thumb Name="RightThumb"
-                           Width="5" Margin="3" Background="Magenta"
+                    <Thumb Name="RightThumb" Width="5" Margin="3" 
                            VerticalAlignment="Stretch" HorizontalAlignment="Right"/>
                 </Grid>
                 

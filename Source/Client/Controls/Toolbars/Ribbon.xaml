@@ -71,8 +71,7 @@
 
             <Button Height="26" Grid.Row="1"
                     HorizontalAlignment="Stretch"
-                    FontSize="10" FontWeight="Bold"
-                          Background="Green">
+                    FontSize="10" FontWeight="Bold">
                 <StackPanel Orientation="Horizontal"
                             Spacing="5">
                     <TextBlock Text="{Binding Header, RelativeSource={RelativeSource TemplatedParent}}"/>
