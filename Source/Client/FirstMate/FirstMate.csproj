@@ -49,6 +49,7 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Terminal\Terminal.csproj" />
     <ProjectReference Include="..\Controls\Controls.csproj" />
   </ItemGroup>
   <ItemGroup>

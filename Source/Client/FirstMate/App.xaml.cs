@@ -30,7 +30,11 @@ public partial class App : Application
     {
         m_window = WindowManager.CreateWindow();
         m_window.Activate();
+
+        m_socket = SocketManager.CreateProxy();
+        _ = m_socket.ConnectAsync();
     }
 
     private Window m_window;
+    private Terminal.Client m_socket;
 }

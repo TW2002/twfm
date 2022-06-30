@@ -7,15 +7,18 @@ using System.Threading.Tasks;
 
 namespace Terminal
 {
-    public class WindowSize
+    public class Console
     {
-        public int WindowSizeX { get; set; }
-        public int WindowSizeY { get; set; }
+        const int DEFAULT_COLUMNS = 120;
+        const int DEFAULT_LINES = 60;
 
-        public WindowSize()
+        public int ConsoleColumns { get; set; }
+        public int ConsoleLines { get; set; }
+
+        public Console()
         {
-            WindowSizeX = -1;
-            WindowSizeY = -1;
+            ConsoleColumns = DEFAULT_COLUMNS;
+            ConsoleLines = DEFAULT_LINES;
         }
     }
 
@@ -24,9 +27,10 @@ namespace Terminal
     {
         private static NetworkStream? stream;
 
-        public static void Initialize(NetworkStream Stream)
+        public static NetworkStream Initialize(Socket socket)
         {
-            stream = Stream;
+            //stream = Stream;
+            stream = new(socket, true);
 
             // Send Telnet Handshake
             byte[] telnet = {
@@ -35,6 +39,8 @@ namespace Terminal
             stream.Write(telnet, 0, telnet.Length);
 
             ParseResponse();
+
+            return stream;
         }
 
         /// <summary>
@@ -44,7 +50,7 @@ namespace Terminal
         /// <param name="stream">NetworkStream to ParseResponse for telnet sequences.</param>
         public static void ParseResponse()
         {
-
+            if (stream == null) return;
             try
             {
                 byte[] readBuffer = new byte[1024];
@@ -121,14 +127,7 @@ namespace Terminal
         }
 
 
-        private static void getWindowX()
-        {
-            //todo:
-        }
-        private static void getWindowY()
-        {
-            //todo:
-        }
+ 
 
     }
 
