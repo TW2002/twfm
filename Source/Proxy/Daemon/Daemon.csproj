@@ -5,10 +5,11 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <AssemblyName>FirstMateDaemon</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Proxy\Proxy.csproj" />
+    <ProjectReference Include="..\..\Shared\Terminal\Terminal.csproj" />
   </ItemGroup>
 
 </Project>

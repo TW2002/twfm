@@ -9,9 +9,11 @@ using System.Threading.Tasks;
 
 namespace Terminal;
 
-public class Server
+public class Proxy
 {
-    const int DEFAULT_PORT = 3000;
+    const int DEFAULT_PORT = 3001;
+
+    ProxyMenu proxyMenu = new();
 
     /// <summary>
     /// Occurs when a new client has connected to the server.
@@ -43,12 +45,13 @@ public class Server
     private bool active;
     private static TcpListener tcpListener;
 
-    const string prompt = "Server Menu - Press <Enter> to Quit <?=Help> [Q]: ";
+    //const string prompt = "Proxy Menu <?=Help> [Q]: ";
+    const string prompt = "Press '@' for FirstMate Proxy commands.\n\r\n\r";
 
     /// <summary>
     /// TODO: Comment
     /// </summary>
-    public Server()
+    public Proxy()
     {
         active = false;
         ServerIP = IPAddress.Any;
@@ -58,7 +61,7 @@ public class Server
     /// <summary>
     /// TODO: Comment
     /// </summary>
-    public Server(String serverAddress)
+    public Proxy(String serverAddress)
     {
         active = false;
         ServerAddress = serverAddress;
@@ -71,7 +74,7 @@ public class Server
     /// </summary>
     /// <param name="serverIP">Specifies the IP Address to bind for the TCP listener.</param>
     /// <param name="serverPort">Specifies the Port to bind for the TCP listener.</param>
-    public Server(IPAddress serverIP, int serverPort)
+    public Proxy(IPAddress serverIP, int serverPort)
     {
         active = false;
         ServerIP = serverIP;
@@ -181,12 +184,17 @@ public class Server
 
     private void ReceiveCallback(IAsyncResult ar)
     {
+        if (ar.AsyncState == null) return;
+
+        // Retrieve the state object and the client socket 
+        // from the asynchronous state object.
+        StateObject state = (StateObject)ar.AsyncState;
+        Socket client = state.workSocket;
+
+        NetworkStream stream = new(client, true);
+
         try
         {
-            // Retrieve the state object and the client socket 
-            // from the asynchronous state object.
-            StateObject? state = (StateObject)ar.AsyncState;
-            Socket client = state.workSocket;
 
             // Read data from the remote device.
             int bytesRead = client.EndReceive(ar);
@@ -197,30 +205,12 @@ public class Server
                 //state.sb.Append(Encoding.ASCII.GetString(state.buffer, 0, bytesRead));
                 string s = Encoding.ASCII.GetString(state.buffer, 0, bytesRead);
 
+
+                // Process menu commands in string.
+                s = proxyMenu.ProcessCommands(stream, s);
+
                 // Echo the text received back to the client.
-                NetworkStream stream = new(client, true);
                 Write(stream, s);
-
-                // Process each character.
-                foreach(char c in s)
-                {
-                    switch (char.ToLower(c))
-                    {
-                        case (char)13:
-                        case 'q':
-                            break;
-
-                        case 'l':
-                            DisplayGames(stream);
-                            break;
-
-                        case '?':
-                            DisplayHelp(stream);
-                            break;
-
-                    }
-
-                }
 
                 // Get the rest of the data.
                 client.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0,
@@ -241,23 +231,11 @@ public class Server
         }
         catch (Exception e)
         {
-            //Console.WriteLine(e.ToString());
+            Write(stream, $"\n\r\n\r<=-ERRROR-=> An unexpected error has occured.\n\r{e.Message}\n\r");
         }
     }
 
-    private void DisplayHelp(NetworkStream stream)
-    {
-        Write(stream, "\n\r\n\rAvailable Commands:\n\r\n\r" +
-                      "<L> List available games\n\r" +
-                      "<Q> Quit (Disconnect)\n\r\n\r" + prompt);
-    }
 
-    private void DisplayGames(NetworkStream stream)
-    {
-        Write(stream, "\n\r\n\rCurrrent Games:\n\r\n\r" +
-                      "MBN - GameZ (2301) - Connected\n\r" +
-                      "Ice9 - GameA (2302) - Disconnected\n\r\n\r" + prompt);
-    }
 
     // State object for receiving data from remote device.
     public class StateObject
@@ -288,12 +266,4 @@ public class Server
     }
 }
 
-public class ConnectedEventArgs : EventArgs
-{
-    public string Address { get; private set; }
 
-    public ConnectedEventArgs(string address)
-    {
-        Address = address;
-    }
-}

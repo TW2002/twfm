@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Proxy": {
+      "commandName": "Project",
+      "commandLineArgs": "\"MBN - GameA\""
+    }
+  }
+}
