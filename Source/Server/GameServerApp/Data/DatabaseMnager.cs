@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Configuration.Data;
+//using Configuration.Data;
 
-namespace Proxy.Data;
+namespace GameServerApp.Data;
 
 public static class DatabaseMnager
 {
     public static void InitializeDB()
     {
-        ConfigContext MenuDB = new();
+        //ConfigContext MenuDB = new();
 
-        MenuInitializer.Initialize(MenuDB);
+        //MenuInitializer.Initialize(MenuDB);
     }
 
 }
