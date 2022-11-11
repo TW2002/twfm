@@ -11,6 +11,9 @@ namespace Configuration.Data;
 
 public class ConfigContext : DbContext
 {
+    public string? Version { get; set; }
+    public string? Banner { get; set; }
+
     const string connectionString = @"Data Source=(LocalDb)\MSSQLLocalDB;" +
         "Trusted_Connection=True;Database=FirstMate-Config";
 

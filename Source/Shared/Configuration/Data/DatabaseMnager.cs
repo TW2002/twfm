@@ -1,25 +1,31 @@
 ﻿using Configuration.Models;
 using System;
 using System.Linq;
+using System.Reflection;
 
 namespace Configuration.Data;
 
-public static class CreateDatabase
+public static class DatabaseMnager 
 {
-    public static ConfigContext Initialize()
+    public static ConfigContext LoadConfig(string mode)
     {
-        ConfigContext context = new();
+        ConfigContext config = new();
 
-        context.Database.EnsureCreated();
+        config.Version = "v22.11a";
+        config.Banner = $"FirstMate {mode} {config.Version} - Ready for Combat!\n\r" +
+                        $"Copyright (c) {DateTime.Now.Year} David McCartney, All rights reserved.\n\r";
+
+
+        config.Database.EnsureCreated();
 
         // Return if there are any existing menus.
         // Database has already been seeded
-        if (context.Menus.Any()) return context;
+        if (config.Menus.Any()) return config;
 
         Guid proxyGuid = Guid.NewGuid();
         Guid databaseGuid = Guid.NewGuid();
 
-        context.Menus.Add(new Menu()
+        config.Menus.Add(new Menu()
         {
             MenuID = proxyGuid,
             ParentID = null,
@@ -30,7 +36,7 @@ public static class CreateDatabase
             Help = ""
         });
 
-        context.Menus.Add(new Menu()
+        config.Menus.Add(new Menu()
         {
             MenuID = databaseGuid,
             ParentID = proxyGuid,
@@ -41,9 +47,9 @@ public static class CreateDatabase
             Help = ""
         });
 
-        context.SaveChanges();
+        config.SaveChanges();
 
-        context.MenuItems.Add(new MenuItem()
+        config.MenuItems.Add(new MenuItem()
         {
             MenuItemID = Guid.NewGuid(),
             ParentID = proxyGuid,
@@ -55,7 +61,7 @@ public static class CreateDatabase
             Help = "Display help for this menu."
         });
 
-        context.MenuItems.Add(new MenuItem()
+        config.MenuItems.Add(new MenuItem()
         {
             MenuItemID = Guid.NewGuid(),
             ParentID = proxyGuid,
@@ -66,7 +72,7 @@ public static class CreateDatabase
             Help = "Quit this menu and return to terminal."
         });
 
-        context.MenuItems.Add(new MenuItem()
+        config.MenuItems.Add(new MenuItem()
         {
             MenuItemID = Guid.NewGuid(),
             ParentID = databaseGuid,
@@ -78,7 +84,7 @@ public static class CreateDatabase
         });
 
 
-        context.SaveChanges();
-        return context;
+        config.SaveChanges();
+        return config;
     }
 }

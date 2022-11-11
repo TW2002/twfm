@@ -11,9 +11,9 @@ namespace Terminal;
 
 public class Proxy
 {
-    const int DEFAULT_PORT = 3001;
+    const int DEFAULT_PORT = 2300;
 
-    ProxyMenu proxyMenu = new();
+    //ProxyMenu proxyMenu = new();
 
     /// <summary>
     /// Occurs when a new client has connected to the server.
@@ -207,7 +207,7 @@ public class Proxy
 
 
                 // Process menu commands in string.
-                s = proxyMenu.ProcessCommands(stream, s);
+                //s = proxyMenu.ProcessCommands(stream, s);
 
                 // Echo the text received back to the client.
                 Write(stream, s);
